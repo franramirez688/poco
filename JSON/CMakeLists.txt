@@ -1,3 +1,4 @@
+IF(NOT BIICODE)
 set(LIBNAME "JSON")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -48,3 +49,4 @@ if (ENABLE_TESTS)
   add_subdirectory(testsuite)
 endif ()
 
+ENDIF(NOT BIICODE)

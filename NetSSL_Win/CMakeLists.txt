@@ -1,3 +1,6 @@
+IF(BIICODE)
+     target_link_libraries(${BII_BLOCK_TARGET} INTERFACE Crypt32.lib)
+ELSE()
 set(LIBNAME "NetSSLWin")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -48,3 +51,4 @@ if (ENABLE_TESTS)
   #add_subdirectory(testsuite)
 endif ()
 
+ENDIF(BIICODE)

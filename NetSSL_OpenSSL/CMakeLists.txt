@@ -1,3 +1,6 @@
+IF(BIICODE)
+    target_link_libraries(${BII_BLOCK_TARGET} INTERFACE ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY})
+ELSE()
 set(LIBNAME "NetSSL")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -47,3 +50,4 @@ if (ENABLE_TESTS)
   add_subdirectory(testsuite)
 endif ()
 
+ENDIF(BIICODE)

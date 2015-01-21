@@ -1,3 +1,4 @@
+IF(NOT BIICODE)
 set(LIBNAME "CppParser")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -47,3 +48,4 @@ if (ENABLE_TESTS)
   add_subdirectory(testsuite)
 endif ()
 
+ENDIF()

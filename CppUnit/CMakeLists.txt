@@ -1,3 +1,4 @@
+IF(NOT BIICODE)
 set(LIBNAME "CppUnit")
 
 # Sources
@@ -20,3 +21,4 @@ target_include_directories( "${LIBNAME}"
         $<INSTALL_INTERFACE:include>
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
     )
+ENDIF(NOT BIICODE)
