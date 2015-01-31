@@ -16,55 +16,12 @@ IF(BIICODE)
         find_package(ZLIB REQUIRED)
         set(SYSLIBS ${SYSLIBS} ${ZLIB_LIBRARIES})
         target_include_directories(${BII_BLOCK_TARGET} INTERFACE ${ZLIB_INCLUDE_DIRS})
-    else()
-        # pcre
-        set( SRCS_pcre
-            Foundation/src/pcre_config.c
-            Foundation/src/pcre_byte_order.c
-            Foundation/src/pcre_chartables.c
-            Foundation/src/pcre_compile.c
-            Foundation/src/pcre_exec.c
-            Foundation/src/pcre_fullinfo.c
-            Foundation/src/pcre_globals.c
-            Foundation/src/pcre_maketables.c
-            Foundation/src/pcre_newline.c
-            Foundation/src/pcre_ord2utf8.c
-            Foundation/src/pcre_study.c
-            Foundation/src/pcre_tables.c
-            Foundation/src/pcre_dfa_exec.c
-            Foundation/src/pcre_get.c
-            Foundation/src/pcre_jit_compile.c
-            Foundation/src/pcre_refcount.c
-            Foundation/src/pcre_string_utils.c
-            Foundation/src/pcre_version.c
-            Foundation/src/pcre_ucd.c
-            Foundation/src/pcre_valid_utf8.c
-            Foundation/src/pcre_xclass.c
-        )
-        list(APPEND BII_LIB_SRC "${SRCS_pcre}")
-
-        # set( SRCS_zlib
-        #     Foundation/src/adler32.c
-        #     Foundation/src/compress.c
-        #     Foundation/src/crc32.c
-        #     Foundation/src/deflate.c
-        #     Foundation/src/infback.c
-        #     Foundation/src/inffast.c
-        #     Foundation/src/inflate.c
-        #     Foundation/src/inftrees.c
-        #     Foundation/src/trees.c
-        #     Foundation/src/zutil.c
-        # )
-        # list(APPEND BII_LIB_SRC ${SRCS_zlib})
     endif (POCO_UNBUNDLED)
 
     if(WIN32)
         set(SYSLIBS ${SYSLIBS} iphlpapi)
     endif(WIN32)
-
-    # TODO: Why is this here?
-    target_compile_definitions(${BII_BLOCK_TARGET} INTERFACE -DPCRE_STATIC)
-    target_link_libraries( ${BII_BLOCK_TARGET} INTERFACE ${SYSLIBS})
+    target_link_libraries(${BII_BLOCK_TARGET} INTERFACE ${SYSLIBS})
 
 ELSE()
 set(LIBNAME "Foundation")

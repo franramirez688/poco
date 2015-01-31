@@ -5,14 +5,6 @@ IF(BIICODE)
         find_package(EXPAT REQUIRED)
         set(SYSLIBS ${SYSLIBS} ${EXPAT_LIBRARIES})
         include_directories(${EXPAT_INCLUDE_DIRS})
-    else()
-        SET( SRCS_expat
-        src/xmlparse.cpp
-        src/xmlrole.c
-        src/xmltok.c
-        src/xmltok_impl.c
-        src/xmltok_ns.c
-        )
     endif (POCO_UNBUNDLED)
 
     if(WIN32)

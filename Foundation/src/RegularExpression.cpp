@@ -20,6 +20,7 @@
 #if defined(POCO_UNBUNDLED)
 #include <pcre.h>
 #else
+#include "fenix/pcreposix/pcreposix.h"
 #include "pcre_config.h"
 #include "pcre.h"
 #endif
