@@ -87,31 +87,37 @@ macro(ENABLE_LIBRARIES )
 endmacro()
 
 macro(FILTER_BAD_DEPENDENCIES)
-    SET(ALL_VALID_MATCHES )
+    SET(ALL_MATCHES )
     # Delete all the bad dependencies which biicode detects
     foreach(RESOURCE_FILE ${BII_LIB_SRC})
       # First filter: selected the pattern "_WIN32" or similars
-      set(VALID_SINGLE_MATCHED )
+      set(WIN_VALID_SINGLE_MATCHED )
+      set(UNIX_VALID_SINGLE_MATCHED )
+      set(BAD_SINGLE_MATCHED )
+      set(SINGLE_MATCHED )
       string(REGEX MATCH "(.*)[_](.*)" SINGLE_MATCHED "${RESOURCE_FILE}")
-      IF(SINGLE_MATCHED)
-        set(RESTRICTED1 )
-        string(REGEX MATCH "(.*)[Platform|expat_external](.*)" RESTRICTED1 "${RESOURCE_FILE}")
-        IF(NOT ${RESTRICTED1})
-          IF(WIN32)
-            string(REGEX MATCH "(.*)[_WIN32](.*)" VALID_SINGLE_MATCHED ${SINGLE_MATCHED})
-          ELSEIF(UNIX)
-            string(REGEX MATCH "(.*)[_UNIX|_POSIX|_STD|_C99](.*)"  VALID_SINGLE_MATCHED ${SINGLE_MATCHED}) 
-          ENDIF()
-          IF(NOT ${VALID_SINGLE_MATCHED})
-            SET(ALL_MATCHES ${ALL_MATCHES} ${SINGLE_MATCHED})
-          ENDIF()
-        ENDIF()
-      ENDIF()
-    endforeach()
+      IF(DEFINED SINGLE_MATCHED)
+        string(REGEX MATCH "(.*)(_WIN32U)(.*)" WIN_VALID_SINGLE_MATCHED "${SINGLE_MATCHED}")
+        string(REGEX MATCH "(.*)(_UNIX|_POSIX|_STD|_C99)(.*)"  UNIX_VALID_SINGLE_MATCHED "${SINGLE_MATCHED}")
+        string(REGEX MATCH "(.*)(_DEC|_DUMMY|_SUN|_VMS|_WINCE|_WIN32|_VX|_Android|_HPUX)(.*)" BAD_SINGLE_MATCHED "${SINGLE_MATCHED}")
+        IF(WIN32 AND (DEFINED UNIX_VALID_SINGLE_MATCHED))
+          # In Win OS the BAD_MATCHES are UNIX implementations
+          SET(ALL_MATCHES ${ALL_MATCHES} ${UNIX_VALID_SINGLE_MATCHED})
+        ELSEIF(UNIX AND (DEFINED WIN_VALID_SINGLE_MATCHED))
+          # In UNIX OS the BAD_MATCHES are WIN32 implementations
+          SET(ALL_MATCHES ${ALL_MATCHES} ${WIN_VALID_SINGLE_MATCHED})
+        ENDIF(WIN32 AND (DEFINED UNIX_VALID_SINGLE_MATCHED))
+        IF(DEFINED BAD_SINGLE_MATCHED)
+         SET(ALL_MATCHES ${ALL_MATCHES} ${BAD_SINGLE_MATCHED})
+        ENDIF(DEFINED BAD_SINGLE_MATCHED)
+
+      ENDIF(DEFINED SINGLE_MATCHED)
+
+    endforeach(RESOURCE_FILE ${BII_LIB_SRC})
 
     FOREACH(BAD_ITEM ${ALL_MATCHES})
       LIST(REMOVE_ITEM BII_LIB_SRC ${BAD_ITEM})
-    ENDFOREACH()
+    ENDFOREACH(BAD_ITEM ${ALL_MATCHES})
 
     # Second filter: special cases
     SET(SPECIAL_BAD_DEPENDENCIES_WIN Foundation/include/Poco/SyslogChannel.h
