@@ -86,33 +86,16 @@ macro(ENABLE_LIBRARIES )
     
 endmacro()
 
+# Delete all the bad implementations which biicode detects
 macro(FILTER_BAD_DEPENDENCIES)
     SET(ALL_MATCHES )
-    # Delete all the bad dependencies which biicode detects
     foreach(RESOURCE_FILE ${BII_LIB_SRC})
-      # First filter: selected the pattern "_WIN32" or similars
-      set(WIN_VALID_SINGLE_MATCHED )
-      set(UNIX_VALID_SINGLE_MATCHED )
-      set(BAD_SINGLE_MATCHED )
-      set(SINGLE_MATCHED )
-      string(REGEX MATCH "(.*)[_](.*)" SINGLE_MATCHED "${RESOURCE_FILE}")
-      IF(DEFINED SINGLE_MATCHED)
-        string(REGEX MATCH "(.*)(_WIN32U)(.*)" WIN_VALID_SINGLE_MATCHED "${SINGLE_MATCHED}")
-        string(REGEX MATCH "(.*)(_UNIX|_POSIX|_STD|_C99)(.*)"  UNIX_VALID_SINGLE_MATCHED "${SINGLE_MATCHED}")
-        string(REGEX MATCH "(.*)(_DEC|_DUMMY|_SUN|_VMS|_WINCE|_WIN32|_VX|_Android|_HPUX)(.*)" BAD_SINGLE_MATCHED "${SINGLE_MATCHED}")
-        IF(WIN32 AND (DEFINED UNIX_VALID_SINGLE_MATCHED))
-          # In Win OS the BAD_MATCHES are UNIX implementations
-          SET(ALL_MATCHES ${ALL_MATCHES} ${UNIX_VALID_SINGLE_MATCHED})
-        ELSEIF(UNIX AND (DEFINED WIN_VALID_SINGLE_MATCHED))
-          # In UNIX OS the BAD_MATCHES are WIN32 implementations
-          SET(ALL_MATCHES ${ALL_MATCHES} ${WIN_VALID_SINGLE_MATCHED})
-        ENDIF(WIN32 AND (DEFINED UNIX_VALID_SINGLE_MATCHED))
-        IF(DEFINED BAD_SINGLE_MATCHED)
-         SET(ALL_MATCHES ${ALL_MATCHES} ${BAD_SINGLE_MATCHED})
-        ENDIF(DEFINED BAD_SINGLE_MATCHED)
-
-      ENDIF(DEFINED SINGLE_MATCHED)
-
+        # First filter: selected the pattern "_WIN32" or similars
+        set(SINGLE_MATCHED )
+        string(REGEX MATCH "(.*)(_WIN32U|_UNIX|_POSIX|_STD|_C99|_DEC|_DUMMY|_SUN|_VMS|_WINCE|_WIN32|_VX|_Android|_HPUX)(.*)" SINGLE_MATCHED "${RESOURCE_FILE}")
+        IF(DEFINED SINGLE_MATCHED)
+            SET(ALL_MATCHES ${ALL_MATCHES} ${SINGLE_MATCHED})
+        ENDIF(DEFINED SINGLE_MATCHED)
     endforeach(RESOURCE_FILE ${BII_LIB_SRC})
 
     FOREACH(BAD_ITEM ${ALL_MATCHES})
@@ -130,7 +113,10 @@ macro(FILTER_BAD_DEPENDENCIES)
                       Foundation/include/Poco/WindowsConsoleChannel.h
                       Foundation/src/WindowsConsoleChannel.cpp
                       Foundation/include/Poco/OpcomChannel.h
-                      Foundation/src/OpcomChannel.cpp)
+                      Foundation/src/OpcomChannel.cpp
+                      Util/src/WinRegistryKey.cpp
+                      Util/src/WinRegistryConfiguration.cpp
+                      Util/src/WinService.cpp)
     IF(WIN32)
       FOREACH(SPECIAL_DEP ${SPECIAL_BAD_DEPENDENCIES_WIN})
         list(FIND BII_LIB_SRC ${SPECIAL_DEP} DEP_MATCH)
