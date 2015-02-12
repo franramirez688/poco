@@ -21,10 +21,10 @@
 
 
 #include "Poco/Net/SocketImpl.h"
-#include "Poco/Net/NetSSL.h"
-#include "Poco/Net/Context.h"
-#include "Poco/Net/AutoSecBufferDesc.h"
-#include "Poco/Net/X509Certificate.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Context.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/AutoSecBufferDesc.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/X509Certificate.h"
 #include "Poco/Buffer.h"
 #include <winsock2.h>
 #include <windows.h>

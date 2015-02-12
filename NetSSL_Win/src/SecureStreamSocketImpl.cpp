@@ -14,8 +14,8 @@
 //
 
 
-#include "Poco/Net/SecureStreamSocketImpl.h"
-#include "Poco/Net/SSLException.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureStreamSocketImpl.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLException.h"
 #include "Poco/Thread.h"
 
 

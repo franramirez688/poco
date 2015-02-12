@@ -20,12 +20,12 @@
 #define NetSSL_SSLManager_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
-#include "Poco/Net/VerificationErrorArgs.h"
-#include "Poco/Net/Context.h"
-#include "Poco/Net/PrivateKeyFactoryMgr.h"
-#include "Poco/Net/CertificateHandlerFactoryMgr.h"
-#include "Poco/Net/InvalidCertificateHandler.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/VerificationErrorArgs.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Context.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/PrivateKeyFactoryMgr.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/CertificateHandlerFactoryMgr.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/InvalidCertificateHandler.h"
 #include "Poco/Util/AbstractConfiguration.h"
 #include "Poco/BasicEvent.h"
 #include "Poco/SharedPtr.h"

@@ -20,8 +20,8 @@
 #define NetSSL_VerificationErrorArgs_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
-#include "Poco/Net/X509Certificate.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/X509Certificate.h"
 
 
 namespace Poco {

@@ -20,9 +20,9 @@
 #define Net_HTTPSSessionInstantiator_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
-#include "Poco/Net/Context.h"
-#include "Poco/Net/Utility.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Context.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Utility.h"
 #include "Poco/Net/HTTPSessionInstantiator.h"
 #include "Poco/URI.h"
 

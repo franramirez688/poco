@@ -20,9 +20,9 @@
 #define NetSSL_SecureServerSocket_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
 #include "Poco/Net/ServerSocket.h"
-#include "Poco/Net/Context.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Context.h"
 
 
 namespace Poco {

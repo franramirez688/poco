@@ -20,7 +20,7 @@
 #define NetSSL_PrivateKeyPassphraseHandler_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
 
 
 namespace Poco {

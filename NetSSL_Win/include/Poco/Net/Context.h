@@ -20,8 +20,8 @@
 #define NetSSL_Context_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
-#include "Poco/Net/X509Certificate.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/X509Certificate.h"
 #include "Poco/RefCountedObject.h"
 #include "Poco/AutoPtr.h"
 #include "Poco/Mutex.h"

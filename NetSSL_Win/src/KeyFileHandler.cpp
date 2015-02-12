@@ -14,8 +14,8 @@
 //
 
 
-#include "Poco/Net/KeyFileHandler.h"
-#include "Poco/Net/SSLManager.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/KeyFileHandler.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLManager.h"
 #include "Poco/File.h"
 #include "Poco/Util/AbstractConfiguration.h"
 #include "Poco/Util/Application.h"

@@ -20,12 +20,12 @@
 #define NetSSL_SecureStreamSocketImpl_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
-#include "Poco/Net/SecureSocketImpl.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureSocketImpl.h"
 #include "Poco/Net/StreamSocketImpl.h"
-#include "Poco/Net/Context.h"
-#include "Poco/Net/Session.h"
-#include "Poco/Net/X509Certificate.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Context.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Session.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/X509Certificate.h"
 
 
 namespace Poco {

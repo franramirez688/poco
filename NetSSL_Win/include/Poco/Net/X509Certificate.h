@@ -20,7 +20,7 @@
 #define NetSSL_X509Certificate_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
 #include "Poco/DateTime.h"
 #include <set>
 #include <istream>

@@ -20,9 +20,9 @@
 #define Net_SecureSMTPClientSession_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
 #include "Poco/Net/SMTPClientSession.h"
-#include "Poco/Net/Context.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Context.h"
 
 
 namespace Poco {

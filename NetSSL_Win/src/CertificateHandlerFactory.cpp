@@ -14,8 +14,8 @@
 //
 
 
-#include "Poco/Net/CertificateHandlerFactory.h"
-#include "Poco/Net/SSLManager.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/CertificateHandlerFactory.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLManager.h"
 
 
 namespace Poco {

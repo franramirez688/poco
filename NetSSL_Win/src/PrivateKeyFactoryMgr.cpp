@@ -14,9 +14,9 @@
 //
 
 
-#include "Poco/Net/PrivateKeyFactoryMgr.h"
-#include "Poco/Net/KeyFileHandler.h"
-#include "Poco/Net/KeyConsoleHandler.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/PrivateKeyFactoryMgr.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/KeyFileHandler.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/KeyConsoleHandler.h"
 
 
 namespace Poco {

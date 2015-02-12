@@ -14,11 +14,11 @@
 //
 
 
-#include "Poco/Net/HTTPSClientSession.h"
-#include "Poco/Net/SecureStreamSocket.h"
-#include "Poco/Net/SecureStreamSocketImpl.h"
-#include "Poco/Net/SSLManager.h"
-#include "Poco/Net/SSLException.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/HTTPSClientSession.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureStreamSocket.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureStreamSocketImpl.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLManager.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLException.h"
 #include "Poco/Net/HTTPRequest.h"
 #include "Poco/Net/HTTPResponse.h"
 #include "Poco/Net/NetException.h"

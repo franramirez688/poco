@@ -14,7 +14,7 @@
 //
 
 
-#include "Poco/Net/SecureServerSocketImpl.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureServerSocketImpl.h"
 
 
 namespace Poco {

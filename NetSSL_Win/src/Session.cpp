@@ -20,7 +20,7 @@
 #endif
 
 
-#include "Poco/Net/Session.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/Session.h"
 
 
 namespace Poco {
