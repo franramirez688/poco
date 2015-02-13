@@ -17,7 +17,7 @@
 
 
 #include "Poco/Poco.h"
-#include "Poco/Net/HTMLForm.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTMLForm.h"
 #include "Poco/Util/AbstractConfiguration.h"
 #include "Poco/AutoPtr.h"
 

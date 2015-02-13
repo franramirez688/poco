@@ -1,7 +1,7 @@
 //
 // HTTPSStreamFactory.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/HTTPSStreamFactory.h#1 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSStreamFactory.h#1 $
 //
 // Library: NetSSL_OpenSSL
 // Package: HTTPSClient
@@ -20,7 +20,7 @@
 #define NetSSL_HTTPSStreamFactory_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
 #include "Poco/Net/HTTPSession.h"
 #include "Poco/URIStreamFactory.h"
 

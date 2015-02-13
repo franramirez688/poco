@@ -1,7 +1,7 @@
 //
 // CertificateHandlerFactoryMgr.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/CertificateHandlerFactoryMgr.h#1 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/CertificateHandlerFactoryMgr.h#1 $
 //
 // Library: NetSSL_OpenSSL
 // Package: SSLCore
@@ -20,8 +20,8 @@
 #define NetSSL_CertificateHandlerFactoryMgr_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
-#include "Poco/Net/CertificateHandlerFactory.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/CertificateHandlerFactory.h"
 #include "Poco/SharedPtr.h"
 #include <map>
 

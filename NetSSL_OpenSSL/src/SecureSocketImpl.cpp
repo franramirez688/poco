@@ -14,13 +14,13 @@
 //
 
 
-#include "Poco/Net/SecureSocketImpl.h"
-#include "Poco/Net/SSLException.h"
-#include "Poco/Net/Context.h"
-#include "Poco/Net/X509Certificate.h"
-#include "Poco/Net/Utility.h"
-#include "Poco/Net/SecureStreamSocket.h"
-#include "Poco/Net/SecureStreamSocketImpl.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureSocketImpl.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLException.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Context.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/X509Certificate.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Utility.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureStreamSocket.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureStreamSocketImpl.h"
 #include "Poco/Net/StreamSocketImpl.h"
 #include "Poco/Net/StreamSocket.h"
 #include "Poco/Net/NetException.h"

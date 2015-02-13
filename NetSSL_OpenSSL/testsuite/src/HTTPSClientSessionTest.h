@@ -16,7 +16,7 @@
 #define HTTPSClientSessionTest_INCLUDED
 
 
-#include "Poco/Net/Net.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Net.h"
 #include "CppUnit/TestCase.h"
 
 

@@ -14,8 +14,8 @@
 //
 
 
-#include "Poco/Net/PrivateKeyPassphraseHandler.h"
-#include "Poco/Net/SSLManager.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/PrivateKeyPassphraseHandler.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h"
 #include "Poco/Delegate.h"
 
 

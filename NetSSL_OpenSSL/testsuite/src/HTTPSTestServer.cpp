@@ -11,9 +11,9 @@
 
 
 #include "HTTPSTestServer.h"
-#include "Poco/Net/SecureStreamSocket.h"
-#include "Poco/Net/SocketAddress.h"
-#include "Poco/Net/SecureStreamSocketImpl.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureStreamSocket.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SocketAddress.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureStreamSocketImpl.h"
 #include "Poco/Timespan.h"
 #include "Poco/NumberFormatter.h"
 #include <iostream>

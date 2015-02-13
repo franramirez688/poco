@@ -16,8 +16,8 @@
 #define HTTPSTestServer_INCLUDED
 
 
-#include "Poco/Net/Net.h"
-#include "Poco/Net/SecureServerSocket.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Net.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureServerSocket.h"
 #include "Poco/Thread.h"
 #include "Poco/Event.h"
 

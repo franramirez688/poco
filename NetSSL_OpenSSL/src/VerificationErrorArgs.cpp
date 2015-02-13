@@ -14,7 +14,7 @@
 //
 
 
-#include "Poco/Net/VerificationErrorArgs.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/VerificationErrorArgs.h"
 
 
 namespace Poco {

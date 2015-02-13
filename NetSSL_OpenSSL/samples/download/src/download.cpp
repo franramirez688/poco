@@ -18,12 +18,12 @@
 #include "Poco/URI.h"
 #include "Poco/SharedPtr.h"
 #include "Poco/Exception.h"
-#include "Poco/Net/HTTPStreamFactory.h"
-#include "Poco/Net/HTTPSStreamFactory.h"
-#include "Poco/Net/FTPStreamFactory.h"
-#include "Poco/Net/SSLManager.h"
-#include "Poco/Net/KeyConsoleHandler.h"
-#include "Poco/Net/ConsoleCertificateHandler.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPStreamFactory.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSStreamFactory.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/FTPStreamFactory.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/KeyConsoleHandler.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/ConsoleCertificateHandler.h"
 #include <memory>
 #include <iostream>
 

@@ -1,7 +1,7 @@
 //
 // X509Certificate.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/X509Certificate.h#3 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/X509Certificate.h#3 $
 //
 // Library: NetSSL_OpenSSL
 // Package: SSLCore
@@ -20,7 +20,7 @@
 #define NetSSL_X509Certificate_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
 #include "Poco/Net/SocketDefs.h"
 #include "Poco/Crypto/X509Certificate.h"
 #include "Poco/DateTime.h"

@@ -1,7 +1,7 @@
 //
 // SecureSocketImpl.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/SecureSocketImpl.h#2 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureSocketImpl.h#2 $
 //
 // Library: NetSSL_OpenSSL
 // Package: SSLSockets
@@ -20,11 +20,11 @@
 #define NetSSL_SecureSocketImpl_INCLUDED
 
 
-#include "Poco/Net/NetSSL.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
 #include "Poco/Net/SocketImpl.h"
-#include "Poco/Net/Context.h"
-#include "Poco/Net/X509Certificate.h"
-#include "Poco/Net/Session.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Context.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/X509Certificate.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Session.h"
 #include <openssl/bio.h>
 #include <openssl/ssl.h>
 

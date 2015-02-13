@@ -14,9 +14,9 @@
 //
 
 
-#include "Poco/Net/X509Certificate.h"
-#include "Poco/Net/SSLException.h"
-#include "Poco/Net/SSLManager.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/X509Certificate.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLException.h"
+#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h"
 #include "Poco/Net/DNS.h"
 #include "Poco/TemporaryFile.h"
 #include "Poco/FileStream.h"
