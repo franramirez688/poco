@@ -208,7 +208,6 @@ void Timer::run()
 			{
 				Poco::ErrorHandler::handle();
 			}
-			Poco::FastMutex::ScopedLock lock(_mutex);
 			interval = _periodicInterval;
 		}
 		_nextInvocation += static_cast<Clock::ClockVal>(interval)*1000;

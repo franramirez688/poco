@@ -40,7 +40,7 @@ class Data_API RowFormatter
 	/// Row formatter can be either passed to the RecordSet at construction time,
 	/// like in the following example:
 	///
-	/// RecordSet rs(session, "SELECT * FROM Table", new MyRowFormater);
+	/// RecordSet rs(session. "SELECT * FROM Table", new MyRowFormater);
 	///
 	/// or it can be supplied to the statement as in the following example:
 	///
@@ -147,12 +147,6 @@ protected:
 	void setPostfix(const std::string& postfix);
 		/// Sets the postfix for the formatter
 
-	virtual void adjustPrefix();
-		/// Adjusts prefix after it has been set.
-		/// No-op here, called by setTotalRowCount and
-		/// should be implemented by inheriting classes, 
-		/// if needed.
-
 private:
 
 	mutable std::string _prefix;
@@ -180,7 +174,6 @@ inline int RowFormatter::getTotalRowCount() const
 inline void RowFormatter::setTotalRowCount(int count)
 {
 	_totalRowCount = count;
-	adjustPrefix();
 }
 
 
@@ -217,11 +210,6 @@ inline RowFormatter::Mode RowFormatter::getMode() const
 inline void RowFormatter::setMode(Mode mode)
 {
 	_mode = mode;
-}
-
-
-inline void RowFormatter::adjustPrefix()
-{
 }
 
 

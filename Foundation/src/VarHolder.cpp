@@ -16,7 +16,6 @@
 
 #include "Poco/Dynamic/VarHolder.h"
 #include "Poco/Dynamic/Var.h"
-#include "Poco/JSONString.h"
 
 
 namespace Poco {
@@ -42,7 +41,33 @@ void escape(std::string& target, const std::string& source)
 	std::string::const_iterator end(source.end());
 	for (; it != end; ++it)
 	{
-		target.append(Poco::toJSON(*it));
+		switch (*it)
+		{
+		case '"':
+			target += "\\\"";
+			break;
+		case '\\':
+			target += "\\\\";
+			break;
+		case '\b':
+			target += "\\b";
+			break;
+		case '\f':
+			target += "\\f";
+			break;
+		case '\n':
+			target += "\\n";
+			break;
+		case '\r':
+			target += "\\r";
+			break;
+		case '\t':
+			target += "\\t";
+			break;
+		default:
+			target += *it;
+			break;
+		}
 	}
 }
 

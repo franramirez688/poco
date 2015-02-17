@@ -1,7 +1,7 @@
 //
 // HTTPSSessionInstantiator.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSSessionInstantiator.h#2 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/HTTPSSessionInstantiator.h#2 $
 //
 // Library: NetSSL_OpenSSL
 // Package: HTTPSClient
@@ -20,9 +20,9 @@
 #define Net_HTTPSSessionInstantiator_INCLUDED
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Context.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Utility.h"
+#include "Poco/Net/NetSSL.h"
+#include "Poco/Net/Context.h"
+#include "Poco/Net/Utility.h"
 #include "Poco/Net/HTTPSessionInstantiator.h"
 #include "Poco/URI.h"
 

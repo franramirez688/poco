@@ -1,7 +1,7 @@
 //
 // Utility.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Utility.h#1 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/Utility.h#1 $
 //
 // Library: NetSSL_OpenSSL
 // Package: SSLCore
@@ -20,8 +20,8 @@
 #define NetSSL_Utility_INCLUDED
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Context.h"
+#include "Poco/Net/NetSSL.h"
+#include "Poco/Net/Context.h"
 
 
 namespace Poco {

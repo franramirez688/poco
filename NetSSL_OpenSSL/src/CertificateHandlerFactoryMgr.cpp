@@ -14,10 +14,10 @@
 //
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/CertificateHandlerFactoryMgr.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/ConsoleCertificateHandler.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/AcceptCertificateHandler.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/RejectCertificateHandler.h"
+#include "Poco/Net/CertificateHandlerFactoryMgr.h"
+#include "Poco/Net/ConsoleCertificateHandler.h"
+#include "Poco/Net/AcceptCertificateHandler.h"
+#include "Poco/Net/RejectCertificateHandler.h"
 
 
 namespace Poco {

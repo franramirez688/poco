@@ -14,8 +14,8 @@
 //
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/InvalidCertificateHandler.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h"
+#include "Poco/Net/InvalidCertificateHandler.h"
+#include "Poco/Net/SSLManager.h"
 #include "Poco/Delegate.h"
 
 

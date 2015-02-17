@@ -14,10 +14,10 @@
 //
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureStreamSocket.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureStreamSocketImpl.h"
+#include "Poco/Net/SecureStreamSocket.h"
+#include "Poco/Net/SecureStreamSocketImpl.h"
 #include "Poco/Net/SocketImpl.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h"
+#include "Poco/Net/SSLManager.h"
 #include "Poco/Exception.h"
 
 

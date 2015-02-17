@@ -17,7 +17,7 @@
 
 
 #include "Poco/Net/Net.h"
-#include "Poco/Net/SecureServerSocket.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureServerSocket.h"
 #include "Poco/Thread.h"
 #include "Poco/Event.h"
 

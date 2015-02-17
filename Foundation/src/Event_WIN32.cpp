@@ -20,9 +20,9 @@
 namespace Poco {
 
 
-EventImpl::EventImpl(EventTypeImpl type)
+EventImpl::EventImpl(bool autoReset)
 {
-	_event = CreateEventW(NULL, type == EVENT_AUTORESET_IMPL ? FALSE : TRUE, FALSE, NULL);
+	_event = CreateEventW(NULL, autoReset ? FALSE : TRUE, FALSE, NULL);
 	if (!_event)
 		throw SystemException("cannot create event");
 }

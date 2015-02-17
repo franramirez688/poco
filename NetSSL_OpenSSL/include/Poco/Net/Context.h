@@ -1,7 +1,7 @@
 //
 // Context.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Context.h#2 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/Context.h#2 $
 //
 // Library: NetSSL_OpenSSL
 // Package: SSLCore
@@ -20,7 +20,7 @@
 #define NetSSL_Context_INCLUDED
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
+#include "Poco/Net/NetSSL.h"
 #include "Poco/Net/SocketDefs.h"
 #include "Poco/Crypto/X509Certificate.h"
 #include "Poco/Crypto/RSAKey.h"

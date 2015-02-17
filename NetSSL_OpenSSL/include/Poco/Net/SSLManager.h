@@ -1,7 +1,7 @@
 //
 // SSLManager.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h#4 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h#4 $
 //
 // Library: NetSSL_OpenSSL
 // Package: SSLCore
@@ -20,12 +20,12 @@
 #define NetSSL_SSLManager_INCLUDED
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/VerificationErrorArgs.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Context.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/PrivateKeyFactoryMgr.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/CertificateHandlerFactoryMgr.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/InvalidCertificateHandler.h"
+#include "Poco/Net/NetSSL.h"
+#include "Poco/Net/VerificationErrorArgs.h"
+#include "Poco/Net/Context.h"
+#include "Poco/Net/PrivateKeyFactoryMgr.h"
+#include "Poco/Net/CertificateHandlerFactoryMgr.h"
+#include "Poco/Net/InvalidCertificateHandler.h"
 #include "Poco/Util/AbstractConfiguration.h"
 #include "Poco/BasicEvent.h"
 #include "Poco/SharedPtr.h"

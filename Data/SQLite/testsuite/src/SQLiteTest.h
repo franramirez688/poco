@@ -135,8 +135,6 @@ public:
 
 	void testFTS3();
 
-	void testJSONRowFormatter();
-
 	void setUp();
 	void tearDown();
 
@@ -154,7 +152,6 @@ public:
 
 private:
 	void setTransactionIsolation(Poco::Data::Session& session, Poco::UInt32 ti);
-	void checkJSON(const std::string& sql, const std::string& json, int mode = 0);
 
 	static int _insertCounter;
 	static int _updateCounter;

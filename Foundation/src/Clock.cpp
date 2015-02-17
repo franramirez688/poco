@@ -22,7 +22,6 @@
 #include <mach/clock.h>
 #elif defined(POCO_OS_FAMILY_UNIX)
 #include <time.h>
-#include <unistd.h>
 #elif defined(POCO_VXWORKS)
 #include <timers.h>
 #elif defined(POCO_OS_FAMILY_WINDOWS)
