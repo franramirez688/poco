@@ -14,15 +14,9 @@ SET(ALL_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/CppUnit/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/Util/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/XML/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/ApacheConnector/include
-                            ${CMAKE_CURRENT_SOURCE_DIR}/CppParser/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/Crypto/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/Data/include
-                            ${CMAKE_CURRENT_SOURCE_DIR}/JSON/include
-                            ${CMAKE_CURRENT_SOURCE_DIR}/MongoDB/include
-                            ${CMAKE_CURRENT_SOURCE_DIR}/NetSSL_OpenSSL/include
-                            ${CMAKE_CURRENT_SOURCE_DIR}/NetSSL_Win/include
-                            ${CMAKE_CURRENT_SOURCE_DIR}/PDF/include
-                            ${CMAKE_CURRENT_SOURCE_DIR}/SevenZip/include
+                            ${CMAKE_CURRENT_SOURCE_DIR}/NetSSLOpenSSL/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/Zip/include)
 
 TARGET_INCLUDE_DIRECTORIES(${BII_BLOCK_TARGET} INTERFACE ${ALL_INCLUDE_DIRECTORIES})
@@ -152,41 +146,18 @@ endif(ANDROID)
 ENABLE_LIBRARIES()
 
 
-if (ENABLE_TESTS)
-   add_subdirectory(CppUnit)
-endif ()
 add_subdirectory(Foundation)
 if(ENABLE_XML)
   add_subdirectory(XML)
 endif()
-if(ENABLE_JSON)
-  add_subdirectory(JSON)
-endif()
-if(ENABLE_MONGODB)
-  add_subdirectory(MongoDB)
-endif()
-if(ENABLE_PDF)
-  add_subdirectory(PDF)
-endif()
-if(ENABLE_UTIL)
-  add_subdirectory(Util)
-endif()
-if(ENABLE_NET)
-  add_subdirectory(Net)
-endif()
 
 #NetSSL
-
-
-if(WIN32 AND ENABLE_NETSSL_WIN)
-    add_subdirectory(NetSSL_Win)
-endif(WIN32 AND ENABLE_NETSSL_WIN)
 
 find_package(OpenSSL)
 if(OPENSSL_FOUND)
     target_include_directories(${BII_BLOCK_TARGET} INTERFACE "${OPENSSL_INCLUDE_DIR}")
     if(ENABLE_NETSSL)
-    add_subdirectory(NetSSL_OpenSSL)
+      target_link_libraries(${BII_BLOCK_TARGET} INTERFACE  ${OPENSSL_SSL_LIBRARY})
     endif()
     if(ENABLE_CRYPTO)
     add_subdirectory(Crypto)
@@ -195,12 +166,6 @@ endif(OPENSSL_FOUND)
 
 if(ENABLE_DATA)
   add_subdirectory(Data)
-endif()
-if(ENABLE_SEVENZIP)
-  add_subdirectory(SevenZip)
-endif()
-if(ENABLE_ZIP)
-  add_subdirectory(Zip)
 endif()
 
 find_package(APR)
@@ -212,18 +177,4 @@ if(APRUTIL_FOUND AND APACHE_FOUND)
     endif()
 endif(APRUTIL_FOUND AND APACHE_FOUND)
 
-if(ENABLE_CPPPARSER)
-  add_subdirectory(CppParser)
-endif()
 
-if(ENABLE_POCODOC)
-  add_subdirectory(PocoDoc)
-endif()
-
-if(ENABLE_PAGECOMPILER)
-  add_subdirectory(PageCompiler)
-endif()
-
-if(ENABLE_PAGECOMPILER_FILE2PAGE)
-  add_subdirectory(PageCompiler/File2Page)
-endif()

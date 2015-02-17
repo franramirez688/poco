@@ -488,7 +488,7 @@
 				<File
 					RelativePath=".\src\Extractor.h"/>
 				<File
-					RelativePath=".\src\Preparator.h"/>
+					RelativePath=".\src\Preparation.h"/>
 				<File
 					RelativePath=".\src\SessionImpl.h"/>
 				<File
@@ -503,7 +503,7 @@
 				<File
 					RelativePath=".\src\Extractor.cpp"/>
 				<File
-					RelativePath=".\src\Preparator.cpp"/>
+					RelativePath=".\src\Preparation.cpp"/>
 				<File
 					RelativePath=".\src\SessionImpl.cpp"/>
 				<File

@@ -37,11 +37,7 @@
 
 
 #if !defined(CppUnit_API)
-	#if defined (__GNUC__) && (__GNUC__ >= 4)
-		#define CppUnit_API __attribute__ ((visibility ("default")))
-	#else
-		#define CppUnit_API
-	#endif
+	#define CppUnit_API
 #endif
 
 

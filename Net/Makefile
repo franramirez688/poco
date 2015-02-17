@@ -8,11 +8,11 @@
 
 include $(POCO_BASE)/build/rules/global
 
-SHAREDOPT_CXX += -DNet_EXPORTS
+SHAREDOPT_CXX   += -DNet_EXPORTS
 
 objects = \
-	Net DNS HTTPResponse HostEntry Socket \
-	DatagramSocket HTTPServer IPAddress IPAddressImpl SocketAddress SocketAddressImpl \
+	DNS HTTPResponse HostEntry Socket \
+	DatagramSocket HTTPServer IPAddress SocketAddress \
 	HTTPBasicCredentials HTTPCookie HTMLForm MediaType DialogSocket \
 	DatagramSocketImpl FilePartSource HTTPServerConnection MessageHeader \
 	HTTPChunkedStream HTTPServerConnectionFactory MulticastSocket SocketStream \
@@ -25,15 +25,13 @@ objects = \
 	HTTPRequestHandler HTTPStream HTTPIOStream ServerSocket TCPServerDispatcher TCPServerConnectionFactory \
 	HTTPRequestHandlerFactory HTTPStreamFactory ServerSocketImpl TCPServerParams \
 	QuotedPrintableEncoder QuotedPrintableDecoder StringPartSource \
-	FTPClientSession FTPStreamFactory PartHandler PartSource PartStore NullPartHandler \
+	FTPClientSession FTPStreamFactory PartHandler PartSource NullPartHandler \
 	SocketReactor SocketNotifier SocketNotification AbstractHTTPRequestHandler \
 	MailRecipient MailMessage MailStream SMTPClientSession POP3ClientSession \
 	RawSocket RawSocketImpl ICMPClient ICMPEventArgs ICMPPacket ICMPPacketImpl \
 	ICMPSocket ICMPSocketImpl ICMPv4PacketImpl \
-	NTPClient NTPEventArgs NTPPacket \
-	RemoteSyslogChannel RemoteSyslogListener SMTPChannel \
-	WebSocket WebSocketImpl \
-	OAuth10Credentials OAuth20Credentials
+	RemoteSyslogChannel RemoteSyslogListener \
+	WebSocket WebSocketImpl
 
 target         = PocoNet
 target_version = $(LIBVERSION)

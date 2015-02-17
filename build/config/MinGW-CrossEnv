@@ -4,7 +4,7 @@
 # MinGW32
 #
 # Make settings for MinGW cross build on Linux
-# (see <http://mxe.cc/>)
+# (see <http://mingw-cross-env.nongnu.org/>)
 #
 
 #
@@ -12,7 +12,7 @@
 #
 LINKMODE ?= STATIC
 POCO_TARGET_OSNAME = MinGW
-POCO_TARGET_OSARCH = i686
+POCO_TARGET_OSARCH = ia32
 CROSSENV = i686-pc-mingw32
 
 #
@@ -23,15 +23,14 @@ CXX     = $(CROSSENV)-g++
 LINK    = $(CXX)
 LIB     = $(CROSSENV)-ar -cr
 RANLIB  = $(CROSSENV)-ranlib
-SHLIB   = $(CXX) -shared -o $@ -Wl,--out-implib=$(dir $@)$(subst cyg,lib,$(basename $(notdir $@))).a
+SHLIB   = $(CXX) -shared -mno-cygwin -o $@ -Wl,--out-implib=$(dir $@)$(subst cyg,lib,$(basename $(notdir $@))).a
 SHLIBLN = $(POCO_BASE)/build/script/shlibln
-STRIP   = $(CROSSENV)-strip
+STRIP   = 
 DEP     = $(POCO_BASE)/build/script/makedepend.gcc 
 SHELL   = sh
 RM      = rm -rf
 CP      = cp
 MKDIR   = mkdir -p
-WINDMC  = $(CROSSENV)-windmc
 
 #
 # Extension for Shared Libraries
@@ -69,9 +68,9 @@ RELEASEOPT_LINK = -O2
 #
 # System Specific Flags
 #
-SYSFLAGS = -D_WIN32 -DMINGW32 -DWINVER=0x501 -DPOCO_NO_FPENVIRONMENT -DPCRE_STATIC -DPOCO_THREAD_STACK_SIZE
+SYSFLAGS = -mno-cygwin -D_WIN32 -DMINGW32 -DWINVER=0x500 -DPOCO_NO_FPENVIRONMENT -DPCRE_STATIC -DPOCO_THREAD_STACK_SIZE -DFoundation_Config_INCLUDED
 
 #
 # System Specific Libraries
 #
-SYSLIBS  = -liphlpapi -lssl -lcrypto -lws2_32
+SYSLIBS  = -liphlpapi -lws2_32 -lssl -lcrypto -lws2_32 -lgdi32

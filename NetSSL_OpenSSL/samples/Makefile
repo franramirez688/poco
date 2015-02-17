@@ -10,4 +10,3 @@
 	$(MAKE) -C HTTPSTimeServer $(MAKECMDGOALS)
 	$(MAKE) -C download $(MAKECMDGOALS)
 	$(MAKE) -C Mail $(MAKECMDGOALS)
-	$(MAKE) -C TwitterClient $(MAKECMDGOALS)

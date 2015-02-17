@@ -1,21 +1,19 @@
 #
 # Makefile
 #
-# $Id: //poco/Main/Data/Makefile#11 $
+# $Id: //poco/1.4/Data/Makefile#1 $
 #
 # Makefile for Poco Data
 #
 
 include $(POCO_BASE)/build/rules/global
 
-objects = AbstractBinder AbstractBinding AbstractExtraction AbstractExtractor \
-	AbstractPreparation AbstractPreparator ArchiveStrategy Transaction \
-	Bulk Connector DataException Date DynamicLOB Limit JSONRowFormatter \
-	MetaColumn PooledSessionHolder PooledSessionImpl Position \
-	Range RecordSet Row RowFilter RowFormatter RowIterator \
-	SimpleRowFormatter Session SessionFactory SessionImpl \
-	SessionPool SessionPoolContainer SQLChannel \
-	Statement StatementCreator StatementImpl Time
+objects = AbstractBinder AbstractBinding AbstractExtraction \
+	AbstractExtractor AbstractPreparation AbstractPrepare \
+	BLOB BLOBStream DataException Limit MetaColumn \
+	PooledSessionHolder PooledSessionImpl \
+	Range RecordSet Session SessionFactory SessionImpl \
+	Connector SessionPool Statement StatementCreator StatementImpl
 
 target         = PocoData
 target_version = $(LIBVERSION)

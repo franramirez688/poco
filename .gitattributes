@@ -24,6 +24,7 @@
 *.properties text
 *.ini text
 *.vxbuild text
+*.cmake text
 
 # Denote all files that are truly binary and should not be modified.
 *.bin binary

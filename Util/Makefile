@@ -13,7 +13,7 @@ objects = AbstractConfiguration Application ConfigurationMapper \
 	LoggingConfigurator LoggingSubsystem MapConfiguration \
 	Option OptionException OptionProcessor OptionSet \
 	PropertyFileConfiguration Subsystem SystemConfiguration \
-	FilesystemConfiguration ServerApplication \
+	XMLConfiguration FilesystemConfiguration ServerApplication \
 	Validator IntValidator RegExpValidator OptionCallback \
 	Timer TimerTask
 
@@ -23,16 +23,6 @@ endif
 
 target         = PocoUtil
 target_version = $(LIBVERSION)
-target_libs    = PocoFoundation
-
-ifndef POCO_UTIL_NO_XMLCONFIGURATION
-objects     += XMLConfiguration
-target_libs += PocoXML
-endif
-
-ifndef POCO_UTIL_NO_JSONCONFIGURATION
-objects     += JSONConfiguration
-target_libs += PocoJSON
-endif
+target_libs    = PocoFoundation PocoXML
 
 include $(POCO_BASE)/build/rules/lib

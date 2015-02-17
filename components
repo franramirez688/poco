@@ -1,8 +1,6 @@
 CppUnit
-CppUnit/WinTestRunner
 Foundation
 XML
-JSON
 Util
 Net
 Crypto
@@ -14,8 +12,3 @@ Data/MySQL
 Zip
 PageCompiler
 PageCompiler/File2Page
-PDF
-CppParser
-MongoDB
-PocoDoc
-ProGen

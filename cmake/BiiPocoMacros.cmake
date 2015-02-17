@@ -14,16 +14,6 @@ macro(ENABLE_LIBRARIES )
       SET(ENABLE_DATA_SQLITE  ON)
     ENDIF()
 
-    string(REGEX MATCH "(.*)[JSON/include](.*)"  JSON_SINGLE_MATCHED "${BII_LIB_SRC}")
-    IF(JSON_SINGLE_MATCHED)
-      SET(ENABLE_JSON ON)
-    ENDIF()
-
-    string(REGEX MATCH "(.*)[MongoDB/include](.*)"  MONGODB_SINGLE_MATCHED "${BII_LIB_SRC}")
-    IF(MONGODB_SINGLE_MATCHED)
-      SET(ENABLE_MONGODB ON)
-    ENDIF()
-
     string(REGEX MATCH "(.*)[Util/include](.*)"  UTIL_SINGLE_MATCHED "${BII_LIB_SRC}")
     IF(UTIL_SINGLE_MATCHED)
       SET(ENABLE_UTIL ON)
@@ -42,11 +32,6 @@ macro(ENABLE_LIBRARIES )
     string(REGEX MATCH "(.*)[ApacheConnector/include](.*)"  APACHECONNECTOR_SINGLE_MATCHED "${BII_LIB_SRC}")
     IF(APACHECONNECTOR_SINGLE_MATCHED)
       SET(ENABLE_APACHECONNECTOR  OFF)
-    ENDIF()
-
-    string(REGEX MATCH "(.*)[CppParser/include](.*)"  CPPPARSER_SINGLE_MATCHED "${BII_LIB_SRC}")
-    IF(CPPPARSER_SINGLE_MATCHED)
-      SET(ENABLE_CPPPARSER OFF)
     ENDIF()
 
     string(REGEX MATCH "(.*)[XML/include](.*)"  XML_SINGLE_MATCHED "${BII_LIB_SRC}")
@@ -69,21 +54,6 @@ macro(ENABLE_LIBRARIES )
         SET(ENABLE_NETSSL ON)
     ENDIF()
 
-    string(REGEX MATCH "(.*)[NetSSL_Win/include](.*)"  NETSSL_WIN_SINGLE_MATCHED "${BII_LIB_SRC}") 
-    IF(NETSSL_WIN_SINGLE_MATCHED)
-        SET(ENABLE_NETSSL_WIN ON)
-    ENDIF()
-
-    string(REGEX MATCH "(.*)[PDF/include](.*)"  PDF_SINGLE_MATCHED "${BII_LIB_SRC}") 
-    IF(PDF_SINGLE_MATCHED)
-        SET(ENABLE_PDF ON)
-    ENDIF()
-
-    string(REGEX MATCH "(.*)[SevenZip/include](.*)"  SEVENZIP_SINGLE_MATCHED "${BII_LIB_SRC}") 
-    IF(SEVENZIP_SINGLE_MATCHED)
-        SET(ENABLE_SEVENZIP  ON)
-    ENDIF()
-    
 endmacro()
 
 # Delete all the bad implementations which biicode detects

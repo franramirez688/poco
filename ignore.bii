@@ -25,10 +25,8 @@ doc/
 build/
 contrib/
 patches/
-PocoDoc/
 PageCompiler/
 release/
-ProGen/
 PageCompiler/
 */doc/*
 */samples/*

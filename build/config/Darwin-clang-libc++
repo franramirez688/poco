@@ -1,11 +1,9 @@
 #
-# $Id: //poco/1.4/build/config/Darwin-clang#4 $
+# $Id: //poco/1.4/build/config/Darwin-clang-libc++#1 $
 #
-# Darwin
+# Darwin-clang-libc++
 #
-# Build settings for Mac OS X 10.6 (clang++)
-# The build settings defined in this file are compatible
-# with XCode 4 C++ projects.
+# Build settings for Mac OS X 10.6 (clang++) with libc++.
 # 
 # NOTE: This build configuration will build 64-bit binaries.
 # Use the Darwin32-clang build configuration to build 32-bit binaries.
@@ -29,7 +27,7 @@ CXX     = $(shell xcrun -find clang++)
 LINK    = $(CXX) -bind_at_load
 LIB     = libtool -static -o
 RANLIB  = ranlib
-SHLIB   = $(CXX) -dynamiclib -Wl,-install_name,$(POCO_LIB_INSTALLDIR)/$(notdir \$@) -o $@
+SHLIB   = $(CXX) -dynamiclib -o $@
 DYLIB   = $(CXX) -dynamic -bundle -read_only_relocs suppress -Wl,-bind_at_load -o $@ 
 SHLIBLN = $(POCO_BASE)/build/script/shlibln
 STRIP   = 
@@ -50,9 +48,9 @@ SHAREDLIBLINKEXT = .dylib
 #
 CFLAGS          = $(ARCHFLAGS)
 CXXFLAGS        = $(ARCHFLAGS) -std=c++11 -stdlib=libc++ -Wall -Wno-sign-compare -Wno-unused-variable -Wno-unused-function -Wno-unneeded-internal-declaration
-LINKFLAGS       = $(ARCHFLAGS) -stdlib=libc++
-SHLIBFLAGS      = $(ARCHFLAGS) -stdlib=libc++
-DYLIBFLAGS      = $(ARCHFLAGS) -stdlib=libc++
+LINKFLAGS       = $(ARCHFLAGS) -std=c++11 -stdlib=libc++
+SHLIBFLAGS      = $(ARCHFLAGS) -std=c++11 -stdlib=libc++
+DYLIBFLAGS      = $(ARCHFLAGS) -std=c++11 -stdlib=libc++
 STATICOPT_CC    =
 STATICOPT_CXX   =
 STATICOPT_LINK  =

@@ -1,6 +1,6 @@
-#! /bin/bash
+#! /bin/sh
 #
-# $Id: //poco/1.4/release/script/mkrelease#8 $
+# $Id: //poco/1.3/release/script/mkrelease#10 $
 #
 # mkrelease
 #
@@ -14,17 +14,15 @@ if [ "$1" = "" ] ; then
 	echo "       -i          - include internal tools"
 	echo "       -f specfile - read component list from specfile"
 	echo "       -o dir      - specify output directory"
-	echo "       -c location - specify line-ending conversion utility (enables conversion)"
 	echo "       -l          - include licensing"
 	exit 1
 fi
 
-comps="Foundation XML JSON Util Net"
+comps="Foundation XML Util Net"
 internal=0
 specfile=""
 version=""
 output=""
-lineEndConv=""
 licensingDep=""
 
 while [ "$1" != "" ] ; 
@@ -40,10 +38,6 @@ do
 		shift
 		output=$1
 		shift
-	elif [ "$1" = "-c" ] ; then
-		shift
-		lineEndConv=$1
-		shift
 	elif [ "$1" = "-l" ] ; then
 		shift
 		licensingDep="Licensing-libexec"
@@ -58,7 +52,7 @@ do
 done
 
 if [ "$specfile" != "" ] ; then
-	while read c
+  while read c
 	do
 		comps="$comps $c"
 	done <$specfile
@@ -78,30 +72,21 @@ fi
 mkdir -p ${target}
 mkdir -p ${target}/doc
 mkdir -p ${target}/contrib
-mkdir -p ${target}/patches
-mkdir -p ${target}/cmake
 
 
 #
 # readme files, etc.
 #
 echo ${version} "(`date +%Y-%m-%d`)" >${target}/VERSION
-cp ${POCO_BASE}/LICENSE ${target}
-cp ${POCO_BASE}/NEWS ${target}
-cp ${POCO_BASE}/README ${target}
-cp ${POCO_BASE}/CHANGELOG ${target}
-cp ${POCO_BASE}/CONTRIBUTORS ${target}
-cp ${POCO_BASE}/DLLVersion.rc ${target}
+cp ${POCO_BASE}/dist/LICENSE ${target}
+cp ${POCO_BASE}/dist/NEWS ${target}
+cp ${POCO_BASE}/dist/README ${target}
+cp ${POCO_BASE}/dist/CHANGELOG ${target}
+cp ${POCO_BASE}/dist/CONTRIBUTORS ${target}
 
 cp ${POCO_BASE}/doc/Acknowledgements.html ${target}/doc
-cp ${POCO_BASE}/doc/*.page ${target}/doc
 
 cp -R ${POCO_BASE}/contrib/* ${target}/contrib
-cp -R ${POCO_BASE}/patches/* ${target}/patches
-
-cp -R ${POCO_BASE}/cmake/* ${target}/cmake
-cp ${POCO_BASE}/CMakeLists.txt ${target}
-
 
 #
 # build system
@@ -110,18 +95,17 @@ mkdir -p ${target}/build/config
 mkdir -p ${target}/build/rules
 mkdir -p ${target}/build/script
 mkdir -p ${target}/build/vms
-mkdir -p ${target}/build/vxconfig
 
 cp ${POCO_BASE}/build/config/* ${target}/build/config
 cp ${POCO_BASE}/build/rules/* ${target}/build/rules
-cp ${POCO_BASE}/build/vxconfig/* ${target}/build/vxconfig
 cp ${POCO_BASE}/build/script/makedepend.* ${target}/build/script
 cp ${POCO_BASE}/build/script/makeldpath ${target}/build/script
 cp ${POCO_BASE}/build/script/shlibln ${target}/build/script
 cp ${POCO_BASE}/build/script/projname ${target}/build/script
-cp ${POCO_BASE}/build/script/vxprogen ${target}/build/script
-cp ${POCO_BASE}/buildwin.cmd ${target}
-cp ${POCO_BASE}/configure ${target}
+cp ${POCO_BASE}/build/vms/* ${target}/build/vms
+cp ${POCO_BASE}/dist/buildwin.cmd ${target}
+cp ${POCO_BASE}/dist/configure ${target}
+cp ${POCO_BASE}/buildvms.com ${target}
 cp ${POCO_BASE}/libversion ${target}
 
 if [ $internal = 1 ] ; then
@@ -142,28 +126,19 @@ mkdir -p ${target}/CppUnit/WinTestRunner/include/WinTestRunner
 mkdir -p ${target}/CppUnit/WinTestRunner/src
 mkdir -p ${target}/CppUnit/WinTestRunner/res
 
-cp ${POCO_BASE}/CppUnit/doc/* ${target}/CppUnit/doc >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/include/CppUnit/* ${target}/CppUnit/include/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/src/* ${target}/CppUnit/src >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/*.sln ${target}/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/*.vcproj ${target}/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/*.vcxproj ${target}/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/*.vcxproj.filters ${target}/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/*.vcxproj.user ${target}/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/Makefile ${target}/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/*.vmsbuild ${target}/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/*.vxbuild ${target}/CppUnit >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/*.progen ${target}/CppUnit >/dev/null 2>&1
+cp ${POCO_BASE}/CppUnit/doc/* ${target}/CppUnit/doc
+cp ${POCO_BASE}/CppUnit/include/CppUnit/* ${target}/CppUnit/include/CppUnit
+cp ${POCO_BASE}/CppUnit/src/* ${target}/CppUnit/src
+cp ${POCO_BASE}/CppUnit/*.sln ${target}/CppUnit
+cp ${POCO_BASE}/CppUnit/*.vcproj ${target}/CppUnit
+cp ${POCO_BASE}/CppUnit/Makefile ${target}/CppUnit
+cp ${POCO_BASE}/CppUnit/*.vmsbuild ${target}/CppUnit
 
-cp ${POCO_BASE}/CppUnit/WinTestRunner/include/WinTestRunner/* ${target}/CppUnit/WinTestRunner/include/WinTestRunner >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/WinTestRunner/src/* ${target}/CppUnit/WinTestRunner/src >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/WinTestRunner/res/WinTestRunner.rc ${target}/CppUnit/WinTestRunner/res >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/WinTestRunner/res/Resource.h ${target}/CppUnit/WinTestRunner/res >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/WinTestRunner/*.vcproj ${target}/CppUnit/WinTestRunner >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/WinTestRunner/*.vcxproj ${target}/CppUnit/WinTestRunner >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/WinTestRunner/*.vcxproj.filters ${target}/CppUnit/WinTestRunner >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/WinTestRunner/*.vcxproj.user ${target}/CppUnit/WinTestRunner >/dev/null 2>&1
-cp ${POCO_BASE}/CppUnit/WinTestRunner/*.progen ${target}/CppUnit/WinTestRunner >/dev/null 2>&1
+cp ${POCO_BASE}/CppUnit/WinTestRunner/include/WinTestRunner/* ${target}/CppUnit/WinTestRunner/include/WinTestRunner
+cp ${POCO_BASE}/CppUnit/WinTestRunner/src/* ${target}/CppUnit/WinTestRunner/src
+cp ${POCO_BASE}/CppUnit/WinTestRunner/res/WinTestRunner.rc ${target}/CppUnit/WinTestRunner/res
+cp ${POCO_BASE}/CppUnit/WinTestRunner/res/Resource.h ${target}/CppUnit/WinTestRunner/res
+cp ${POCO_BASE}/CppUnit/WinTestRunner/*.vcproj ${target}/CppUnit/WinTestRunner
 
 
 #
@@ -179,7 +154,6 @@ done
 # Create components file
 #
 echo "CppUnit" >${target}/components
-echo "CppUnit/WinTestRunner" >>${target}/components
 for comp in $comps ;
 do
 	echo $comp >>${target}/components
@@ -203,7 +177,6 @@ cat >${target}/Makefile <<'ENDOFSCRIPT'
 #
 
 sinclude config.make
-sinclude config.build
 
 ifndef POCO_BASE
 $(warning WARNING: POCO_BASE is not defined. Assuming current directory.)
@@ -218,10 +191,8 @@ ifndef POCO_BUILD
 export POCO_BUILD=$(POCO_BASE)
 endif
 
-.PHONY: poco all libexecs cppunit tests samples cleans clean distclean install
+.PHONY: all libexecs cppunit tests samples clean distclean install
 
-# TESTS and SAMPLES are set in config.make
-poco: libexecs $(if $(TESTS),tests) $(if $(SAMPLES),samples) 
 all: libexecs tests samples
 
 INSTALLDIR = $(DESTDIR)$(POCO_PREFIX)
@@ -233,9 +204,6 @@ cat >>${target}/Makefile <<'ENDOFSCRIPT'
 
 cppunit:
 	$(MAKE) -C $(POCO_BASE)/CppUnit 
-
-CppUnit-clean:
-	\$(MAKE) -C \$(POCO_BASE)/CppUnit clean
 
 install: libexecs
 	mkdir -p $(INSTALLDIR)/include/Poco
@@ -257,11 +225,9 @@ ENDOFSCRIPT
 libexecs=""
 tests=""
 samples=""
-cleans=""
 for comp in $comps ;
 do
 	libexecs="$libexecs ${comp}-libexec"
-	cleans="$cleans ${comp}-clean"
 	if [ -d "${POCO_BASE}/${comp}/testsuite" ] ; then
 		tests="$tests ${comp}-tests"
 	fi
@@ -273,21 +239,18 @@ done
 echo "libexecs = $libexecs" >>${target}/Makefile
 echo "tests    = $tests" >> ${target}/Makefile
 echo "samples  = $samples" >> ${target}/Makefile
-echo "cleans   = $cleans" >> ${target}/Makefile
 echo "" >>${target}/Makefile
 echo '.PHONY: $(libexecs)' >>${target}/Makefile
 echo '.PHONY: $(tests)' >>${target}/Makefile
 echo '.PHONY: $(samples)' >>${target}/Makefile
-echo '.PHONY: $(cleans)' >>${target}/Makefile
 echo "" >>${target}/Makefile
 echo 'libexecs: $(filter-out $(foreach f,$(OMIT),$f%),$(libexecs))' >>${target}/Makefile
 echo 'tests: $(filter-out $(foreach f,$(OMIT),$f%),$(tests))' >>${target}/Makefile
 echo 'samples: $(filter-out $(foreach f,$(OMIT),$f%),$(samples))' >>${target}/Makefile
-echo 'cleans: $(filter-out $(foreach f,$(OMIT),$f%),$(cleans))' >>${target}/Makefile
 
 for comp in $comps ;
 do
-	if [ "`grep -c POCO_LICENSING "${POCO_BASE}/${comp}/Makefile"`" != 0 ] ; then
+	if [ `grep -c POCO_LICENSING "${POCO_BASE}/${comp}/Makefile"` != 0 ] ; then
 		dependencies=$licensingDep
 	else
 		dependencies=""
@@ -295,8 +258,6 @@ do
 	if [ -f "${POCO_BASE}/${comp}/dependencies" ] ; then
 		for dep in `cat "${POCO_BASE}/${comp}/dependencies"` ;
 		do
-			# get rid of surrounding whitespace (trailing \r on Cygwin)
-			read dep <<< "$dep"
 			dependencies="$dependencies ${dep}-libexec"
 		done
 	fi
@@ -319,8 +280,6 @@ ENDOFSCRIPT
 		if [ -f "${POCO_BASE}/${comp}/samples/dependencies" ] ; then
 			for dep in `cat "${POCO_BASE}/${comp}/samples/dependencies"` ;
 			do
-				# get rid of surrounding whitespace (trailing \r on Cygwin)
-				read dep <<< ${dep}
 				sdependencies="$sdependencies ${dep}-libexec"
 			done
 		fi
@@ -330,29 +289,28 @@ ${comp}-samples: ${comp}-libexec $sdependencies
 	\$(MAKE) -C \$(POCO_BASE)/${comp}/samples
 ENDOFSCRIPT
 	fi
+done
 
+echo "" >>${target}/Makefile
+echo "clean:" >>${target}/Makefile
+for comp in $comps ;
+do
 	cat >>${target}/Makefile <<ENDOFSCRIPT
-
-${comp}-clean:
 	\$(MAKE) -C \$(POCO_BASE)/${comp} clean
 ENDOFSCRIPT
-
-	if [ -f "${POCO_BASE}/${comp}/testsuite/Makefile" ] ; then
-		cat >>${target}/Makefile <<ENDOFSCRIPT 
+	if [ -f ${POCO_BASE}/${comp}/testsuite/Makefile ] ; then
+		cat >>${target}/Makefile <<ENDOFSCRIPT
 	\$(MAKE) -C \$(POCO_BASE)/${comp}/testsuite clean
 ENDOFSCRIPT
 	fi
-
-	if [ -f "${POCO_BASE}/${comp}/samples/Makefile" ] ; then
-		cat >>${target}/Makefile <<ENDOFSCRIPT 
+	if [ -f ${POCO_BASE}/${comp}/samples/Makefile ] ; then
+		cat >>${target}/Makefile <<ENDOFSCRIPT
 	\$(MAKE) -C \$(POCO_BASE)/${comp}/samples clean
 ENDOFSCRIPT
 	fi
 done
 
 cat >>${target}/Makefile <<ENDOFSCRIPT
-
-clean: cleans CppUnit-clean
 
 distclean:
 	rm -rf \$(POCO_BUILD)/lib
@@ -363,89 +321,39 @@ ENDOFSCRIPT
 
 
 #
-# Create Visual Studio 9 build script
+# Create Visual Studio 7.1 buils script
+#
+cat >${target}/build_vs71.cmd <<'ENDOFSCRIPT'
+@echo off
+buildwin 71 build shared both yes
+ENDOFSCRIPT
+
+
+#
+# Create Visual Studio 8 buils script
+#
+cat >${target}/build_vs80.cmd <<'ENDOFSCRIPT'
+@echo off
+buildwin 80 build shared both yes
+ENDOFSCRIPT
+
+
+#
+# Create Visual Studio 9 buils script
 #
 cat >${target}/build_vs90.cmd <<'ENDOFSCRIPT'
 @echo off
-if defined VS90COMNTOOLS (
-call "%VS90COMNTOOLS%\vsvars32.bat")
-buildwin 90 build shared both Win32 samples
-ENDOFSCRIPT
-
-
-#
-# Create Visual Studio 10 build script
-#
-cat >${target}/build_vs100.cmd <<'ENDOFSCRIPT'
-@echo off
-if defined VS100COMNTOOLS (
-call "%VS100COMNTOOLS%\vsvars32.bat")
-buildwin 100 build shared both Win32 samples
-ENDOFSCRIPT
-
-
-#
-# Create Visual Studio 11 build script
-#
-cat >${target}/build_vs110.cmd <<'ENDOFSCRIPT'
-@echo off
-if defined VS110COMNTOOLS (
-call "%VS110COMNTOOLS%\vsvars32.bat")
-buildwin 110 build shared both Win32 samples
-ENDOFSCRIPT
-
-
-#
-# Create Visual Studio 12 build script
-#
-cat >${target}/build_vs120.cmd <<'ENDOFSCRIPT'
-@echo off
-if defined VS120COMNTOOLS (
-call "%VS120COMNTOOLS%\vsvars32.bat")
-buildwin 120 build shared both Win32 samples
-ENDOFSCRIPT
-
-
-#
-# Create Visual Studio 9 WinCE build script
-#
-cat >${target}/build_CE_vs90.cmd <<'ENDOFSCRIPT'
-@echo off
-buildwin 90 build static_mt both WinCE samples
-ENDOFSCRIPT
-
-
-#
-# Create Visual C++ Express 2008 build script
-#
-cat >${target}/build_vcexpress2008.cmd <<'ENDOFSCRIPT'
-@echo off
-buildwin 90 build shared both Win32 samples vcexpress
-ENDOFSCRIPT
-
-
-#
-# Create Visual C++ Express 2010 build script
-#
-cat >${target}/build_vcexpress2010.cmd <<'ENDOFSCRIPT'
-@echo off
-buildwin 100 build shared both Win32 samples vcexpress
+buildwin 90 build shared both yes
 ENDOFSCRIPT
 
 
 #
 # Fix line endings
 #
-if [ "$lineEndConv" != "" ] ; then
-	$lineEndConv ${target}/build_vs71.cmd
-	$lineEndConv ${target}/build_vs80.cmd
-	$lineEndConv ${target}/build_vs90.cmd
-	$lineEndConv ${target}/build_vs100.cmd
-	$lineEndConv ${target}/build_CE_vs90.cmd
-	$lineEndConv ${target}/build_vcexpress2008.cmd
-	$lineEndConv ${target}/build_vcexpress2010.cmd
-	$lineEndConv ${target}/Makefile
-	$lineEndConv ${target}/components
+if [ -x /usr/bin/unix2dos ] ; then
+	/usr/bin/unix2dos ${target}/build_vs71.cmd
+	/usr/bin/unix2dos ${target}/build_vs80.cmd
+	/usr/bin/unix2dos ${target}/build_vs90.cmd
 fi
 
 

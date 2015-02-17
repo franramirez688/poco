@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
-	Name="ApacheConnector"
-	Version="9.00"
 	ProjectType="Visual C++"
+	Version="9.00"
+	Name="ApacheConnector"
 	ProjectGUID="{9866EE28-0612-4746-BD35-3B15B0AF7267}"
-	RootNamespace="ApacheConnector"
-	Keyword="Win32Proj">
+	RootNamespace="ApacheHandlers"
+	Keyword="Win32Proj"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
-	<ToolFiles/>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="debug_shared|Win32"
-			OutputDirectory="obj\$(ConfigurationName)"
-			IntermediateDirectory="obj\$(ConfigurationName)"
+			OutputDirectory="obj\debug_shared"
+			IntermediateDirectory="obj\debug_shared"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCXMLDataGeneratorTool"/>
+				Name="VCXMLDataGeneratorTool"
+			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCMIDLTool"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=".\include;..\Foundation\include;..\Net\include;..\Util\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;ApacheHandlers_EXPORTS"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;POCO_DLL;ApacheHandlers_EXPORTS"
 				StringPooling="true"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -44,60 +53,79 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
+				DebugInformationFormat="4"
 				CompileAs="0"
-				DisableSpecificWarnings=""
-				AdditionalOptions=""/>
+			/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
 			<Tool
-				Name="VCResourceCompilerTool"/>
+				Name="VCResourceCompilerTool"
+			/>
 			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCPreLinkEventTool"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libapr-1.lib libaprutil-1.lib libhttpd.lib"
-				OutputFile="..\bin\mod_pocod.dll"
+				AdditionalDependencies="PocoFoundationd.lib PocoNetd.lib PocoUtild.lib libapr-1.lib libaprutil-1.lib libhttpd.lib"
+				OutputFile=".\bin\mod_pocod.so"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="..\bin\mod_pocod.pdb"
 				AdditionalLibraryDirectories="..\lib"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile=".\bin\mod_pocod.pdb"
 				SubSystem="1"
-				ImportLibrary="..\lib\mod_pocod.lib"
+				OptimizeForWindows98="0"
+				ImportLibrary="..\lib\PocoApacheConnectord.lib"
 				TargetMachine="1"
-				AdditionalOptions=""/>
+			/>
 			<Tool
-				Name="VCALinkTool"/>
+				Name="VCALinkTool"
+			/>
 			<Tool
-				Name="VCManifestTool"/>
+				Name="VCManifestTool"
+			/>
 			<Tool
-				Name="VCXDCMakeTool"/>
+				Name="VCXDCMakeTool"
+			/>
 			<Tool
-				Name="VCBscMakeTool"/>
+				Name="VCBscMakeTool"
+			/>
 			<Tool
-				Name="VCFxCopTool"/>
+				Name="VCFxCopTool"
+			/>
 			<Tool
-				Name="VCAppVerifierTool"/>
+				Name="VCAppVerifierTool"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 		<Configuration
 			Name="release_shared|Win32"
-			OutputDirectory="obj\$(ConfigurationName)"
-			IntermediateDirectory="obj\$(ConfigurationName)"
+			OutputDirectory="obj\release_shared"
+			IntermediateDirectory="obj\release_shared"
 			ConfigurationType="2"
-			CharacterSet="2">
+			CharacterSet="2"
+			>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCXMLDataGeneratorTool"/>
+				Name="VCXMLDataGeneratorTool"
+			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCMIDLTool"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="4"
@@ -106,7 +134,9 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				AdditionalIncludeDirectories=".\include;..\Foundation\include;..\Net\include;..\Util\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ApacheHandlers_EXPORTS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;POCO_DLL;ApacheHandlers_EXPORTS"
+				GeneratePreprocessedFile="0"
+				KeepComments="false"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
@@ -118,80 +148,126 @@
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
-				DisableSpecificWarnings=""
-				AdditionalOptions=""/>
+			/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
 			<Tool
-				Name="VCResourceCompilerTool"/>
+				Name="VCResourceCompilerTool"
+			/>
 			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCPreLinkEventTool"
+			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libapr-1.lib libaprutil-1.lib libhttpd.lib"
-				OutputFile="..\bin\mod_poco.dll"
+				AdditionalDependencies="PocoFoundation.lib PocoNet.lib PocoUtil.lib libapr-1.lib libaprutil-1.lib libhttpd.lib"
+				OutputFile=".\bin\mod_poco.so"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				GenerateDebugInformation="false"
 				AdditionalLibraryDirectories="..\lib"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile=""
 				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="..\lib\mod_poco.lib"
+				OptimizeForWindows98="0"
+				ImportLibrary="..\lib\PocoApacheConnector.lib"
 				TargetMachine="1"
-				AdditionalOptions=""/>
+			/>
 			<Tool
-				Name="VCALinkTool"/>
+				Name="VCALinkTool"
+			/>
 			<Tool
-				Name="VCManifestTool"/>
+				Name="VCManifestTool"
+			/>
 			<Tool
-				Name="VCXDCMakeTool"/>
+				Name="VCXDCMakeTool"
+			/>
 			<Tool
-				Name="VCBscMakeTool"/>
+				Name="VCBscMakeTool"
+			/>
 			<Tool
-				Name="VCFxCopTool"/>
+				Name="VCFxCopTool"
+			/>
 			<Tool
-				Name="VCAppVerifierTool"/>
+				Name="VCAppVerifierTool"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 	</Configurations>
-	<References/>
+	<References>
+	</References>
 	<Files>
 		<Filter
-			Name="Header Files">
+			Name="Header Files"
+			>
 			<File
-				RelativePath=".\include\ApacheApplication.h"/>
+				RelativePath=".\include\ApacheApplication.h"
+				>
+			</File>
 			<File
-				RelativePath=".\include\ApacheChannel.h"/>
+				RelativePath=".\include\ApacheChannel.h"
+				>
+			</File>
 			<File
-				RelativePath=".\include\ApacheConnector.h"/>
+				RelativePath=".\include\ApacheConnector.h"
+				>
+			</File>
 			<File
-				RelativePath=".\include\ApacheRequestHandlerFactory.h"/>
+				RelativePath=".\include\ApacheRequestHandlerFactory.h"
+				>
+			</File>
 			<File
-				RelativePath=".\include\ApacheServerRequest.h"/>
+				RelativePath=".\include\ApacheServerRequest.h"
+				>
+			</File>
 			<File
-				RelativePath=".\include\ApacheServerResponse.h"/>
+				RelativePath=".\include\ApacheServerResponse.h"
+				>
+			</File>
 			<File
-				RelativePath=".\include\ApacheStream.h"/>
+				RelativePath=".\include\ApacheStream.h"
+				>
+			</File>
 		</Filter>
 		<Filter
-			Name="Source Files">
+			Name="Source Files"
+			>
 			<File
-				RelativePath=".\src\ApacheApplication.cpp"/>
+				RelativePath=".\src\ApacheApplication.cpp"
+				>
+			</File>
 			<File
-				RelativePath=".\src\ApacheChannel.cpp"/>
+				RelativePath=".\src\ApacheChannel.cpp"
+				>
+			</File>
 			<File
-				RelativePath=".\src\ApacheConnector.cpp"/>
+				RelativePath=".\src\ApacheConnector.cpp"
+				>
+			</File>
 			<File
-				RelativePath=".\src\ApacheRequestHandlerFactory.cpp"/>
+				RelativePath=".\src\ApacheRequestHandlerFactory.cpp"
+				>
+			</File>
 			<File
-				RelativePath=".\src\ApacheServerRequest.cpp"/>
+				RelativePath=".\src\ApacheServerRequest.cpp"
+				>
+			</File>
 			<File
-				RelativePath=".\src\ApacheServerResponse.cpp"/>
+				RelativePath=".\src\ApacheServerResponse.cpp"
+				>
+			</File>
 			<File
-				RelativePath=".\src\ApacheStream.cpp"/>
+				RelativePath=".\src\ApacheStream.cpp"
+				>
+			</File>
 		</Filter>
 	</Files>
-	<Globals/>
+	<Globals>
+	</Globals>
 </VisualStudioProject>

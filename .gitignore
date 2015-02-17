@@ -13,23 +13,6 @@
 *.la
 *.a
 *.d
-*.vsp
-*.psess
-
-# Make #
-########
-config.build
-config.make
-
-# CMake #
-########
-cmake_install.cmake
-cmake_uninstall.cmake
-CMakeFiles
-CMakeCache.txt
-CPackConfig.cmake
-CPackSourceConfig.cmake
-cmake_*
 
 # Packages #
 ############
@@ -46,11 +29,9 @@ cmake_*
 
 # Logs and databases #
 ######################
-*.log*
+*.log
 *.sqlite
 *.db
-test*.txt
-XML/testsuite/rss.xml
 
 # OS generated files #
 ######################
@@ -62,7 +43,6 @@ XML/testsuite/rss.xml
 Icon?
 ehthumbs.db
 Thumbs.db
-*~
 
 # VS generated files #
 ######################
@@ -90,26 +70,10 @@ Thumbs.db
 *.lastbuildstate
 *.unsuccessfulbuild
 release_shared/
-debug_shared/
+debug_share/
 release_static/
 debug_static/
-release_static_md/
-debug_static_md/
-release_static_mt/
-debug_static_mt/
 bin/
 bin64/
-lib/
-lib64/
 pocomsg.h
 
-# Eclipse generated files #
-######################
-.project
-.cproject
-.settings
-cmake-build/
-
-# Temporary files #
-###################
-*.bak

@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="debug_shared|x64"
-			OutputDirectory="obj64\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj64\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj64\$(ConfigurationName)"
+			IntermediateDirectory="obj64\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -102,8 +102,8 @@
 		</Configuration>
 		<Configuration
 			Name="release_shared|x64"
-			OutputDirectory="obj64\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj64\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj64\$(ConfigurationName)"
+			IntermediateDirectory="obj64\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -192,8 +192,8 @@
 		</Configuration>
 		<Configuration
 			Name="release_static_md|x64"
-			OutputDirectory="obj64\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj64\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj64\$(ConfigurationName)"
+			IntermediateDirectory="obj64\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -267,8 +267,8 @@
 		</Configuration>
 		<Configuration
 			Name="debug_static_md|x64"
-			OutputDirectory="obj64\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj64\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj64\$(ConfigurationName)"
+			IntermediateDirectory="obj64\$(ConfigurationName)"
 			ConfigurationType="4"
 			CharacterSet="2"
 			>
@@ -338,8 +338,8 @@
 		</Configuration>
 		<Configuration
 			Name="debug_static_mt|x64"
-			OutputDirectory="obj64\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj64\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj64\$(ConfigurationName)"
+			IntermediateDirectory="obj64\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
@@ -410,8 +410,8 @@
 		</Configuration>
 		<Configuration
 			Name="release_static_mt|x64"
-			OutputDirectory="obj64\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj64\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj64\$(ConfigurationName)"
+			IntermediateDirectory="obj64\$(ConfigurationName)"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
@@ -509,54 +509,6 @@
 				<File
 					RelativePath=".\src\ByteOrder.cpp"
 					>
-					<FileConfiguration
-						Name="debug_shared|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_mt|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\src\Checksum.cpp"
@@ -567,7 +519,11 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\DirectoryIteratorStrategy.cpp"
+					RelativePath=".\src\DynamicAny.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\DynamicAnyHolder.cpp"
 					>
 				</File>
 				<File
@@ -781,10 +737,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\Error.cpp"
-					>
 				</File>
 				<File
 					RelativePath=".\src\Exception.cpp"
@@ -1075,68 +1027,12 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\NumericString.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\RefCountedObject.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\SortedDirectoryIterator.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\src\String.cpp"
 					>
-					<FileConfiguration
-						Name="debug_shared|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_mt|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\src\StringTokenizer.cpp"
@@ -1227,15 +1123,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\Error.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\Exception.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\FIFOBuffer.h"
 					>
 				</File>
 				<File
@@ -1303,10 +1191,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\NumericString.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\ObjectPool.h"
 					>
 				</File>
@@ -1344,10 +1228,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\SingletonHolder.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\SortedDirectoryIterator.h"
 					>
 				</File>
 				<File
@@ -1391,14 +1271,6 @@
 				Name="Source Files"
 				>
 				<File
-					RelativePath=".\src\Base32Decoder.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\Base32Encoder.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\Base64Decoder.cpp"
 					>
 				</File>
@@ -1420,10 +1292,6 @@
 				</File>
 				<File
 					RelativePath=".\src\DeflatingStream.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\FIFOBufferStream.cpp"
 					>
 				</File>
 				<File
@@ -1579,14 +1447,6 @@
 				Name="Header Files"
 				>
 				<File
-					RelativePath=".\include\Poco\Base32Decoder.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\Base32Encoder.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\Base64Decoder.h"
 					>
 				</File>
@@ -1620,10 +1480,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\DeflatingStream.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\FIFOBufferStream.h"
 					>
 				</File>
 				<File
@@ -2229,54 +2085,6 @@
 				<File
 					RelativePath=".\src\SignalHandler.cpp"
 					>
-					<FileConfiguration
-						Name="debug_shared|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_mt|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\src\SynchronizedObject.cpp"
@@ -2983,23 +2791,11 @@
 				Name="PCRE Source Files"
 				>
 				<File
-					RelativePath=".\src\pcre_byte_order.c"
-					>
-				</File>
-				<File
 					RelativePath=".\src\pcre_chartables.c"
 					>
 				</File>
 				<File
 					RelativePath=".\src\pcre_compile.c"
-					>
-				</File>
-				<File
-					RelativePath=".\src\pcre_config.c"
-					>
-				</File>
-				<File
-					RelativePath=".\src\pcre_dfa_exec.c"
 					>
 				</File>
 				<File
@@ -3011,15 +2807,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\pcre_get.c"
-					>
-				</File>
-				<File
 					RelativePath=".\src\pcre_globals.c"
-					>
-				</File>
-				<File
-					RelativePath=".\src\pcre_jit_compile.c"
 					>
 				</File>
 				<File
@@ -3035,14 +2823,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\pcre_refcount.c"
-					>
-				</File>
-				<File
-					RelativePath=".\src\pcre_string_utils.c"
-					>
-				</File>
-				<File
 					RelativePath=".\src\pcre_study.c"
 					>
 				</File>
@@ -3051,15 +2831,15 @@
 					>
 				</File>
 				<File
+					RelativePath=".\src\pcre_try_flipped.c"
+					>
+				</File>
+				<File
 					RelativePath=".\src\pcre_ucd.c"
 					>
 				</File>
 				<File
 					RelativePath=".\src\pcre_valid_utf8.c"
-					>
-				</File>
-				<File
-					RelativePath=".\src\pcre_version.c"
 					>
 				</File>
 				<File
@@ -5829,10 +5609,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\UTF32Encoding.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\UTF8Encoding.cpp"
 					>
 				</File>
@@ -5873,10 +5649,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\ListMap.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\StreamConverter.h"
 					>
 				</File>
@@ -5906,10 +5678,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\UTF16Encoding.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\UTF32Encoding.h"
 					>
 				</File>
 				<File
@@ -6045,10 +5813,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\DirectoryIteratorStrategy.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\EventArgs.h"
 					>
 				</File>
@@ -6090,14 +5854,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\PriorityStrategy.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\RecursiveDirectoryIterator.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\RecursiveDirectoryIteratorImpl.h"
 					>
 				</File>
 			</Filter>
@@ -6254,50 +6010,6 @@
 				</File>
 				<File
 					RelativePath=".\src\HashStatistic.cpp"
-					>
-				</File>
-			</Filter>
-		</Filter>
-		<Filter
-			Name="Dynamic"
-			>
-			<Filter
-				Name="Header Files"
-				>
-				<File
-					RelativePath=".\include\Poco\Dynamic\Pair.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\Dynamic\Struct.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\Dynamic\Var.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\Dynamic\VarHolder.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\Dynamic\VarIterator.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="Source Files"
-				>
-				<File
-					RelativePath=".\src\Var.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\VarHolder.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\src\VarIterator.cpp"
 					>
 				</File>
 			</Filter>

@@ -1,7 +1,7 @@
 #
 # Makefile
 #
-# $Id: //poco/Main/Data/samples/Makefile#2 $
+# $Id: //poco/1.4/Data/samples/Makefile#1 $
 #
 # Makefile for Poco Data Samples
 #
@@ -12,6 +12,4 @@ projects:
 	$(MAKE) -C Binding $(MAKECMDGOALS)
 	$(MAKE) -C TypeHandler $(MAKECMDGOALS)
 	$(MAKE) -C RecordSet $(MAKECMDGOALS)
-	$(MAKE) -C RowFormatter $(MAKECMDGOALS)
 	$(MAKE) -C Tuple $(MAKECMDGOALS)
-	$(MAKE) -C WebNotifier $(MAKECMDGOALS)

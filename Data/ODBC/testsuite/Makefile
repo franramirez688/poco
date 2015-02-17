@@ -1,7 +1,7 @@
 #
 # Makefile
 #
-# $Id: //poco/1.4/Data/ODBC/testsuite/Makefile#4 $
+# $Id: //poco/1.4/Data/ODBC/testsuite/Makefile#5 $
 #
 # Makefile for Poco SQLite testsuite
 #
@@ -20,19 +20,18 @@ include $(POCO_BASE)/Data/ODBC/ODBC.make
 # Note:                                                                                          #
 #  Do not change linking order or move this line up, these libs have to be linked in this order. #
 ##################################################################################################
-ifneq ($(OSNAME),Darwin)
-SYSLIBS += -lltdl
-endif
-ifneq ($(OSNAME),FreeBSD)
+ifeq ($(OSNAME),Darwin)
 SYSLIBS += -ldl
+else
+SYSLIBS += -lltdl -ldl
 endif
 
 objects = ODBCTestSuite Driver \
 	ODBCDB2Test ODBCMySQLTest ODBCOracleTest ODBCPostgreSQLTest \
-	ODBCSQLiteTest ODBCSQLServerTest ODBCTest SQLExecutor
+	ODBCSQLiteTest ODBCSQLServerTest SQLExecutor
 
 ifeq ($(POCO_CONFIG),MinGW)
-	objects += ODBCAccessTest
+    objects += ODBCAccessTest
 endif
 
 target         = testrunner
