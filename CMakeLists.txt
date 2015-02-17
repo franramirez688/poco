@@ -8,6 +8,7 @@ FILTER_BAD_DEPENDENCIES()
 ADD_BIICODE_TARGETS()
 
 SET(ALL_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/CppUnit/include
+                            ${CMAKE_CURRENT_SOURCE_DIR}/CppUnit/WinTestRunner/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/Foundation/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/Net/include
                             ${CMAKE_CURRENT_SOURCE_DIR}/Util/include
