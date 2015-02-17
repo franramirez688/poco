@@ -429,44 +429,7 @@
 				<File
 					RelativePath=".\src\XMLException.cpp"/>
 				<File
-					RelativePath=".\src\XMLString.cpp">
-					<FileConfiguration
-						Name="debug_shared|x64"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|x64"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_mt|x64"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|x64"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|x64"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|x64"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-				</File>
+					RelativePath=".\src\XMLString.cpp"/>
 				<File
 					RelativePath=".\src\XMLWriter.cpp"/>
 			</Filter>
@@ -853,14 +816,12 @@
 		<File
 			RelativePath="..\DLLVersion.rc">
 			<FileConfiguration
-				Name="debug_shared|x64"
-				ExcludedFromBuild="true">
+				Name="debug_shared|x64">
 				<Tool
 					Name="VCResourceCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="release_shared|x64"
-				ExcludedFromBuild="true">
+				Name="release_shared|x64">
 				<Tool
 					Name="VCResourceCompilerTool"/>
 			</FileConfiguration>

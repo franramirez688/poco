@@ -23,18 +23,10 @@
 namespace Poco {
 
 
-void Bugcheck::assertion(const char* cond, const char* file, int line, const char* text)
+void Bugcheck::assertion(const char* cond, const char* file, int line)
 {
-	std::string message("Assertion violation: ");
-	message += cond;
-	if (text)
-	{
-		message += " (";
-		message += text;
-		message += ")";
-	}
-	Debugger::enter(message, file, line);
-	throw AssertionViolationException(what(cond, file, line, text));
+	Debugger::enter(std::string("Assertion violation: ") + cond, file, line);
+	throw AssertionViolationException(what(cond, file, line));
 }
 
 
@@ -108,11 +100,10 @@ void Bugcheck::debugger(const char* msg, const char* file, int line)
 }
 
 
-std::string Bugcheck::what(const char* msg, const char* file, int line, const char* text)
+std::string Bugcheck::what(const char* msg, const char* file, int line)
 {
 	std::ostringstream str;
 	if (msg) str << msg << " ";
-   if (text != NULL) str << "(" << text << ") ";
 	str << "in file \"" << file << "\", line " << line;
 	return str.str();
 }

@@ -56,7 +56,7 @@ protected:
 	std::size_t columnsReturned() const;
 		/// Returns number of columns returned by query.
 
-	int affectedRowCount() const;
+	std::size_t affectedRowCount() const;
 		/// Returns the number of affected rows.
 		/// Used to find out the number of rows affected by insert or update.
 

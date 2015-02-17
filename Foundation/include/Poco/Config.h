@@ -21,8 +21,6 @@
 
 
 // Define to enable Windows Unicode (UTF-8) support
-// NOTE: As of POCO C++ Libraries release 1.6.0, compiling POCO
-// without POCO_WIN32_UTF8 defined on Windows is deprecated.
 #define POCO_WIN32_UTF8
 
 

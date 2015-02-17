@@ -12,13 +12,13 @@
 //
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPServer.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPRequestHandler.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPRequestHandlerFactory.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPServerParams.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPServerRequestImpl.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPServerResponse.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPServerParams.h"
+#include "Poco/Net/HTTPServer.h"
+#include "Poco/Net/HTTPRequestHandler.h"
+#include "Poco/Net/HTTPRequestHandlerFactory.h"
+#include "Poco/Net/HTTPServerParams.h"
+#include "Poco/Net/HTTPServerRequestImpl.h"
+#include "Poco/Net/HTTPServerResponse.h"
+#include "Poco/Net/HTTPServerParams.h"
 #include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureStreamSocket.h"
 #include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureServerSocket.h"
 #include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/X509Certificate.h"

@@ -109,7 +109,6 @@ private:
 	PriorityExpire();
 };
 
-
 template <>
 class PriorityExpire<void>: public AbstractPriorityDelegate<void>
 	/// Decorator for AbstractPriorityDelegate adding automatic
@@ -189,8 +188,6 @@ protected:
 private:
 	PriorityExpire();
 };
-
-
 } // namespace Poco
 
 

@@ -184,7 +184,7 @@ void Timer::run()
 		}
 		while (sleep < 0);
 
-		if (_wakeUp.tryWait(sleep))
+		if (_wakeUp.tryWait(sleep > _periodicInterval ? _periodicInterval : sleep))
 		{
 			Poco::FastMutex::ScopedLock lock(_mutex);
 			_nextInvocation.update();
@@ -208,7 +208,6 @@ void Timer::run()
 			{
 				Poco::ErrorHandler::handle();
 			}
-			Poco::FastMutex::ScopedLock lock(_mutex);
 			interval = _periodicInterval;
 		}
 		_nextInvocation += static_cast<Clock::ClockVal>(interval)*1000;

@@ -28,7 +28,6 @@ namespace Poco {
 
 class Timespan;
 
-
 class Foundation_API Timestamp
 	/// A Timestamp stores a monotonic* time value
 	/// with (theoretical) microseconds resolution.
@@ -37,37 +36,22 @@ class Foundation_API Timestamp
 	///
 	/// [*] Note that Timestamp values are only monotonic as
 	/// long as the systems's clock is monotonic as well
-	/// (and not, e.g. set back due to time synchronization
-	/// or other reasons).
+	/// (and not, e.g. set back).
 	///
 	/// Timestamps are UTC (Coordinated Universal Time)
 	/// based and thus independent of the timezone
 	/// in effect on the system.
-	///
-	/// The internal reference time is the Unix epoch, 
-	/// midnight, January 1, 1970.
 {
 public:
-	typedef Int64 TimeVal; 
-		/// Monotonic UTC time value in microsecond resolution,
-		/// with base time midnight, January 1, 1970.
-		
-	typedef Int64 UtcTimeVal; 
-		/// Monotonic UTC time value in 100 nanosecond resolution,
-		/// with base time midnight, October 15, 1582.
-		
-	typedef Int64 TimeDiff;
-		/// Difference between two TimeVal values in microseconds.
-
-	static const TimeVal TIMEVAL_MIN; /// Minimum timestamp value.
-	static const TimeVal TIMEVAL_MAX; /// Maximum timestamp value.
+	typedef Int64 TimeVal;    /// monotonic UTC time value in microsecond resolution
+	typedef Int64 UtcTimeVal; /// monotonic UTC time value in 100 nanosecond resolution
+	typedef Int64 TimeDiff;   /// difference between two timestamps in microseconds
 
 	Timestamp();
 		/// Creates a timestamp with the current time.
 		
 	Timestamp(TimeVal tv);
-		/// Creates a timestamp from the given time value
-		/// (microseconds since midnight, January 1, 1970).
+		/// Creates a timestamp from the given time value.
 		
 	Timestamp(const Timestamp& other);
 		/// Copy constructor.
@@ -132,11 +116,9 @@ public:
 		/// Creates a timestamp from a std::time_t.
 		
 	static Timestamp fromUtcTime(UtcTimeVal val);
-		/// Creates a timestamp from a UTC time value
-		/// (100 nanosecond intervals since midnight,
-		/// October 15, 1582).
+		/// Creates a timestamp from a UTC time value.
 		
-	static TimeDiff resolution();
+	static TimeVal resolution();
 		/// Returns the resolution in units per second.
 		/// Since the timestamp has microsecond resolution,
 		/// the returned value is always 1000000.
@@ -255,7 +237,7 @@ inline bool Timestamp::isElapsed(Timestamp::TimeDiff interval) const
 }
 
 
-inline Timestamp::TimeDiff Timestamp::resolution()
+inline Timestamp::TimeVal Timestamp::resolution()
 {
 	return 1000000;
 }

@@ -46,12 +46,8 @@ class MongoDB_API ObjectId
 public:
 	typedef SharedPtr<ObjectId> Ptr;
 
-	ObjectId(const std::string& id);
-		/// Constructor. The string must contain a hexidecimal representation
-		/// of an object id. This means a string of 24 characters.
-
-	ObjectId(const ObjectId& copy);
-		/// Copy constructor.
+	ObjectId(const std::string& id = "");
+		/// Constructor
 
 	virtual ~ObjectId();
 		/// Destructor
@@ -65,19 +61,10 @@ public:
 		/// of the ID char array.
 
 private:
-
-	ObjectId();
-		/// Constructor. Creates an empty Id
-
 	unsigned char _id[12];
 
 	friend class BSONWriter;
 	friend class BSONReader;
-	friend class Document;
-	
-	static int fromHex(char c);
-	
-	static char fromHex(const char* c);
 };
 
 
@@ -92,21 +79,6 @@ inline Timestamp ObjectId::timestamp() const
 	return Timestamp::fromEpochTime((time_t) time);
 }
 
-inline int ObjectId::fromHex(char c)
-{
-	if ( '0' <= c && c <= '9' )
-		return c - '0';
-	if ( 'a' <= c && c <= 'f' )
-		return c - 'a' + 10;
-	if ( 'A' <= c && c <= 'F' )
-		return c - 'A' + 10;
-	return 0xff;
-}
-
-inline char ObjectId::fromHex(const char* c)
-{
-	return (char)((fromHex(c[0]) << 4 ) | fromHex(c[1]));
-}
 
 // BSON Embedded Document
 // spec: ObjectId
@@ -117,7 +89,7 @@ struct ElementTraits<ObjectId::Ptr>
 
 	static std::string toString(const ObjectId::Ptr& id,
 		int indent = 0,
-		const std::string& fmt = "%02x")
+		const std::string& fmt = "%x")
 	{
 		return id->toString(fmt);
 	}

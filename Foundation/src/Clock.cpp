@@ -22,23 +22,15 @@
 #include <mach/clock.h>
 #elif defined(POCO_OS_FAMILY_UNIX)
 #include <time.h>
-#include <unistd.h>
 #elif defined(POCO_VXWORKS)
 #include <timers.h>
 #elif defined(POCO_OS_FAMILY_WINDOWS)
 #include "Poco/UnWindows.h"
 #endif
 #include <algorithm>
-#undef min
-#undef max
-#include <limits>
 
 
 namespace Poco {
-
-
-const Clock::ClockVal Clock::CLOCKVAL_MIN = std::numeric_limits<Clock::ClockVal>::min();
-const Clock::ClockVal Clock::CLOCKVAL_MAX = std::numeric_limits<Clock::ClockVal>::max();
 
 
 Clock::Clock()
@@ -136,7 +128,7 @@ void Clock::update()
 }
 
 
-Clock::ClockDiff Clock::accuracy()
+Clock::ClockVal Clock::accuracy()
 {
 #if defined(POCO_OS_FAMILY_WINDOWS)
 

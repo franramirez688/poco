@@ -38,7 +38,6 @@ public:
 	void testKeepAlive();
 	void testProxy();
 	void testProxyAuth();
-	void testBypassProxy();
 
 	void setUp();
 	void tearDown();

@@ -34,7 +34,7 @@ class NetSSL_Win_API PrivateKeyPassphraseHandler
 	/// in the implementation file of the subclass the following code must be present (assuming you use the namespace My_API 
 	/// and the name of your handler class is MyGuiHandler):
 	///    
-	///    #include "Poco/Net/PrivateKeyFactory.h"
+	///    #include "fenix/poco/NetSSL_Win/include/Poco/Net/PrivateKeyFactory.h"
 	///    ...
 	///    POCO_REGISTER_KEYFACTORY(My_API, MyGuiHandler)
 	///

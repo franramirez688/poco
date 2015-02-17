@@ -1,6 +1,5 @@
 add_subdirectory(ActiveMethod)
 add_subdirectory(Activity)
-add_subdirectory(Benchmark)
 add_subdirectory(BinaryReaderWriter)
 add_subdirectory(DateTime)
 add_subdirectory(LogRotation)
@@ -17,4 +16,5 @@ add_subdirectory(grep)
 add_subdirectory(hmacmd5)
 add_subdirectory(inflate)
 add_subdirectory(md5)
-add_subdirectory(uuidgen)
+add_subdirectory(uuidgen
+)

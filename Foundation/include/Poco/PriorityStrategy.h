@@ -36,7 +36,6 @@ class PriorityStrategy: public NotificationStrategy<TArgs, TDelegate>
 	/// by their priority.
 {
 public:
-	typedef TDelegate*                   DelegateHandle;
 	typedef SharedPtr<TDelegate>         DelegatePtr;
 	typedef std::vector<DelegatePtr>     Delegates;
 	typedef typename Delegates::iterator Iterator;
@@ -63,20 +62,17 @@ public:
 		}
 	}
 
-	DelegateHandle add(const TDelegate& delegate)
+	void add(const TDelegate& delegate)
 	{
 		for (Iterator it = _delegates.begin(); it != _delegates.end(); ++it)
 		{
 			if ((*it)->priority() > delegate.priority())
 			{
-				DelegatePtr pDelegate(static_cast<TDelegate*>(delegate.clone()));
-				_delegates.insert(it, pDelegate);
-				return pDelegate.get();
+				_delegates.insert(it, DelegatePtr(static_cast<TDelegate*>(delegate.clone())));
+				return;
 			}
 		}
-		DelegatePtr pDelegate(static_cast<TDelegate*>(delegate.clone()));
-		_delegates.push_back(pDelegate);
-		return pDelegate.get();
+		_delegates.push_back(DelegatePtr(static_cast<TDelegate*>(delegate.clone())));
 	}
 
 	void remove(const TDelegate& delegate)
@@ -84,19 +80,6 @@ public:
 		for (Iterator it = _delegates.begin(); it != _delegates.end(); ++it)
 		{
 			if (delegate.equals(**it))
-			{
-				(*it)->disable();
-				_delegates.erase(it);
-				return;
-			}
-		}
-	}
-
-	void remove(DelegateHandle delegateHandle)
-	{
-		for (Iterator it = _delegates.begin(); it != _delegates.end(); ++it)
-		{
-			if (*it == delegateHandle)
 			{
 				(*it)->disable();
 				_delegates.erase(it);
@@ -132,7 +115,6 @@ protected:
 	Delegates _delegates;
 };
 
-
 template <class TDelegate>
 class PriorityStrategy<void, TDelegate>
 	/// NotificationStrategy for PriorityEvent.
@@ -141,7 +123,6 @@ class PriorityStrategy<void, TDelegate>
 	/// by their priority.
 {
 public:
-	typedef TDelegate*                   DelegateHandle;
 	typedef SharedPtr<TDelegate>         DelegatePtr;
 	typedef std::vector<DelegatePtr>     Delegates;
 	typedef typename Delegates::iterator Iterator;
@@ -156,20 +137,17 @@ public:
 		}
 	}
 
-	DelegateHandle add(const TDelegate& delegate)
+	void add(const TDelegate& delegate)
 	{
 		for (Iterator it = _delegates.begin(); it != _delegates.end(); ++it)
 		{
 			if ((*it)->priority() > delegate.priority())
 			{
-				DelegatePtr pDelegate(static_cast<TDelegate*>(delegate.clone()));
-				_delegates.insert(it, pDelegate);
-				return pDelegate.get();
+				_delegates.insert(it, DelegatePtr(static_cast<TDelegate*>(delegate.clone())));
+				return;
 			}
 		}
-		DelegatePtr pDelegate(static_cast<TDelegate*>(delegate.clone()));
-		_delegates.push_back(pDelegate);
-		return pDelegate.get();
+		_delegates.push_back(DelegatePtr(static_cast<TDelegate*>(delegate.clone())));
 	}
 
 	void remove(const TDelegate& delegate)
@@ -177,19 +155,6 @@ public:
 		for (Iterator it = _delegates.begin(); it != _delegates.end(); ++it)
 		{
 			if (delegate.equals(**it))
-			{
-				(*it)->disable();
-				_delegates.erase(it);
-				return;
-			}
-		}
-	}
-
-	void remove(DelegateHandle delegateHandle)
-	{
-		for (Iterator it = _delegates.begin(); it != _delegates.end(); ++it)
-		{
-			if (*it == delegateHandle)
 			{
 				(*it)->disable();
 				_delegates.erase(it);
@@ -224,8 +189,6 @@ public:
 protected:
 	Delegates _delegates;
 };
-
-
 } // namespace Poco
 
 

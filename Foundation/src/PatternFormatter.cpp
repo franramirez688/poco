@@ -34,16 +34,18 @@ const std::string PatternFormatter::PROP_TIMES   = "times";
 
 
 PatternFormatter::PatternFormatter():
-	_localTime(false)
+	_localTime(false),
+	_localTimeOffset(Timestamp::resolution()*(Timezone::utcOffset() + Timezone::dst()))
 {
 }
 
 
 PatternFormatter::PatternFormatter(const std::string& format):
 	_localTime(false),
+	_localTimeOffset(Timestamp::resolution()*(Timezone::utcOffset() + Timezone::dst())),
 	_pattern(format)
 {
-	parsePattern();
+	ParsePattern();
 }
 
 
@@ -58,8 +60,7 @@ void PatternFormatter::format(const Message& msg, std::string& text)
 	bool localTime = _localTime;
 	if (localTime)
 	{
-		timestamp += Timezone::utcOffset()*Timestamp::resolution();
-		timestamp += Timezone::dst()*Timestamp::resolution();
+		timestamp  += _localTimeOffset;
 	}
 	DateTime dateTime = timestamp;
 	for (std::vector<PatternAction>::iterator ip = _patternActions.begin(); ip != _patternActions.end(); ++ip)
@@ -123,8 +124,7 @@ void PatternFormatter::format(const Message& msg, std::string& text)
 			if (!localTime)
 			{
 				localTime = true;
-				timestamp += Timezone::utcOffset()*Timestamp::resolution();
-				timestamp += Timezone::dst()*Timestamp::resolution();
+				timestamp  += _localTimeOffset;
 				dateTime = timestamp;
 			}
 			break;
@@ -132,8 +132,7 @@ void PatternFormatter::format(const Message& msg, std::string& text)
 	}
 }
 
-
-void PatternFormatter::parsePattern()
+void PatternFormatter::ParsePattern()
 {
 	_patternActions.clear();
 	std::string::const_iterator it  = _pattern.begin();
@@ -197,7 +196,7 @@ void PatternFormatter::setProperty(const std::string& name, const std::string& v
 	if (name == PROP_PATTERN)
 	{
 		_pattern = value;
-		parsePattern();
+		ParsePattern();
 	}
 	else if (name == PROP_TIMES)
 	{

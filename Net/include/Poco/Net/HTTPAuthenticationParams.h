@@ -46,7 +46,7 @@ public:
 	explicit HTTPAuthenticationParams(const HTTPRequest& request);
 		/// See fromRequest() documentation.
 
-	HTTPAuthenticationParams(const HTTPResponse& response, const std::string& header = WWW_AUTHENTICATE);
+	explicit HTTPAuthenticationParams(const HTTPResponse& response);
 		/// See fromResponse() documentation.
 
 	virtual ~HTTPAuthenticationParams();
@@ -68,7 +68,7 @@ public:
 		/// Throws a InvalidArgumentException if authentication scheme is
 		/// unknown or invalid.
 
-	void fromResponse(const HTTPResponse& response, const std::string& header = WWW_AUTHENTICATE);
+	void fromResponse(const HTTPResponse& response);
 		/// Extracts authentication information from the response and creates
 		/// HTTPAuthenticationParams by parsing it.
 		///
@@ -91,8 +91,6 @@ public:
 		/// request or response authentication header.
 
 	static const std::string REALM;
-	static const std::string WWW_AUTHENTICATE;
-	static const std::string PROXY_AUTHENTICATE;
 
 private:
 	void parse(std::string::const_iterator first, std::string::const_iterator last);

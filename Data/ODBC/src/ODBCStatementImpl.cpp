@@ -440,7 +440,7 @@ const MetaColumn& ODBCStatementImpl::metaColumn(std::size_t pos) const
 }
 
 
-int ODBCStatementImpl::affectedRowCount() const
+std::size_t ODBCStatementImpl::affectedRowCount() const
 {
 	if (0 == _affectedRowCount)
 	{

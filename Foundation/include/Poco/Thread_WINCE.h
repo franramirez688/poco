@@ -22,7 +22,6 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Runnable.h"
-#include "Poco/SharedPtr.h"
 #include "Poco/UnWindows.h"
 
 
@@ -40,6 +39,16 @@ public:
     typedef DWORD TIDImpl;
 	typedef void (*Callable)(void*);
 	typedef DWORD (WINAPI *Entry)(LPVOID);
+
+	struct CallbackData
+	{
+		CallbackData(): callback(0), pData(0)
+		{
+		}
+
+		Callable  callback;
+		void*     pData; 
+	};
 
 	enum Priority
 	{
@@ -67,7 +76,9 @@ public:
 	static int getMaxOSPriorityImpl(int policy);
 	void setStackSizeImpl(int size);
 	int getStackSizeImpl() const;
-	void startImpl(SharedPtr<Runnable> pTarget);
+	void startImpl(Runnable& target);
+	void startImpl(Callable target, void* pData = 0);
+
 	void joinImpl();
 	bool joinImpl(long milliseconds);
 	bool isRunningImpl() const;
@@ -78,6 +89,7 @@ public:
 
 protected:
 	static DWORD WINAPI runnableEntry(LPVOID pThread);
+	static DWORD WINAPI callableEntry(LPVOID pThread);
 
 	void createImpl(Entry ent, void* pData);
 	void threadCleanup();
@@ -108,7 +120,8 @@ private:
 		DWORD _slot;
 	};
 
-	SharedPtr<Runnable> _pRunnableTarget;
+	Runnable*    _pRunnableTarget;
+	CallbackData _callbackTarget;
 	HANDLE       _thread;
 	DWORD        _threadId;
 	int          _prio;

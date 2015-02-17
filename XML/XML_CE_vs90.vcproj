@@ -470,44 +470,7 @@
 				<File
 					RelativePath=".\src\XMLException.cpp"/>
 				<File
-					RelativePath=".\src\XMLString.cpp">
-					<FileConfiguration
-						Name="debug_shared|Digi JumpStart (ARMV4I)"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Digi JumpStart (ARMV4I)"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_mt|Digi JumpStart (ARMV4I)"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Digi JumpStart (ARMV4I)"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Digi JumpStart (ARMV4I)"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Digi JumpStart (ARMV4I)"
-						ExcludedFromBuild="true">
-						<Tool
-							Name="VCCLCompilerTool"/>
-					</FileConfiguration>
-				</File>
+					RelativePath=".\src\XMLString.cpp"/>
 				<File
 					RelativePath=".\src\XMLWriter.cpp"/>
 			</Filter>
@@ -894,14 +857,12 @@
 		<File
 			RelativePath="..\DLLVersion.rc">
 			<FileConfiguration
-				Name="debug_shared|Digi JumpStart (ARMV4I)"
-				ExcludedFromBuild="true">
+				Name="debug_shared|Digi JumpStart (ARMV4I)">
 				<Tool
 					Name="VCResourceCompilerTool"/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="release_shared|Digi JumpStart (ARMV4I)"
-				ExcludedFromBuild="true">
+				Name="release_shared|Digi JumpStart (ARMV4I)">
 				<Tool
 					Name="VCResourceCompilerTool"/>
 			</FileConfiguration>

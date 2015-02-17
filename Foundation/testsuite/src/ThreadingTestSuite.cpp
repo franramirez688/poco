@@ -12,7 +12,6 @@
 
 #include "ThreadingTestSuite.h"
 #include "ThreadTest.h"
-#include "MutexTest.h"
 #include "SemaphoreTest.h"
 #include "RWLockTest.h"
 #include "ThreadPoolTest.h"
@@ -29,7 +28,6 @@ CppUnit::Test* ThreadingTestSuite::suite()
 	CppUnit::TestSuite* pSuite = new CppUnit::TestSuite("ThreadingTestSuite");
 
 	pSuite->addTest(ThreadTest::suite());
-	pSuite->addTest(MutexTest::suite());
 	pSuite->addTest(SemaphoreTest::suite());
 	pSuite->addTest(RWLockTest::suite());
 	pSuite->addTest(ThreadPoolTest::suite());

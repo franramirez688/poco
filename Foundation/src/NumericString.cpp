@@ -93,11 +93,12 @@ void insertThousandSep(std::string& str, char thSep, char decSep = '.')
 	std::string::size_type decPos = str.find(decSep);
 	// there's no rinsert, using forward iterator to go backwards
 	std::string::iterator it = str.end();
+	std::string::iterator begin = str.begin();
 	if (exPos != std::string::npos) it -= str.size() - exPos;
 
 	if (decPos != std::string::npos)
 	{
-		while (it != str.begin())
+		while (it != begin)
 		{
 			--it;
 			if (*it == decSep) break;
@@ -105,7 +106,7 @@ void insertThousandSep(std::string& str, char thSep, char decSep = '.')
 	}
 	int thCount = 0;
 	if (it == str.end()) --it;
-	for (; it != str.begin();)
+	for (; it != begin;)
 	{
 		std::string::iterator pos = it;
 		std::string::value_type chr = *it;

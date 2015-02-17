@@ -24,17 +24,8 @@
 #include "Poco/String.h"
 #include "Poco/Mutex.h"
 #include "Poco/Data/DataException.h"
-#if defined(POCO_UNBUNDLED)
-#include <sqlite3.h>
-#else
 #include "sqlite3.h"
-#endif
 #include <cstdlib>
-
-
-#ifndef SQLITE_OPEN_URI
-#define SQLITE_OPEN_URI 0
-#endif
 
 
 namespace Poco {
@@ -56,7 +47,7 @@ SessionImpl::SessionImpl(const std::string& fileName, std::size_t loginTimeout):
 {
 	open();
 	setConnectionTimeout(CONNECTION_TIMEOUT_DEFAULT);
-	setProperty("handle", _pDB);
+	setProperty("handle", static_cast<void*>(_pDB));
 	addFeature("autoCommit", 
 		&SessionImpl::autoCommit, 
 		&SessionImpl::isAutoCommit);
@@ -159,7 +150,7 @@ private:
 
 	inline int connectImpl()
 	{
-		return sqlite3_open_v2(_connectString.c_str(), _ppDB, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_URI, NULL);
+		return sqlite3_open(_connectString.c_str(), _ppDB);
 	}
 
 	std::string _connectString;
@@ -193,8 +184,7 @@ void SessionImpl::open(const std::string& connect)
 			close();
 			Utility::throwException(rc);
 		}
-	} 
-	catch (SQLiteException& ex)
+	} catch (SQLiteException& ex)
 	{
 		throw ConnectionFailedException(ex.displayText());
 	}
@@ -256,16 +246,6 @@ bool SessionImpl::isAutoCommit(const std::string&)
 {
 	Poco::Mutex::ScopedLock l(_mutex);
 	return (0 != sqlite3_get_autocommit(_pDB));
-}
-
-
-// NOTE: Utility::dbHandle() has been moved here from Utility.cpp
-// as a workaround for a failing AnyCast with Clang.
-// See <https://github.com/pocoproject/poco/issues/578>
-// for a discussion.
-sqlite3* Utility::dbHandle(const Session& session)
-{
-	return AnyCast<sqlite3*>(session.getProperty("handle"));
 }
 
 

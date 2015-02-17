@@ -42,8 +42,7 @@ public:
 	void testColumnList();
 	void testRow();
 	void testRowSort();
-	void testSimpleRowFormatter();
-	void testJSONRowFormatter();
+	void testRowFormat();
 	void testDateAndTime();
 	void testExternalBindingAndExtraction();
 

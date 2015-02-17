@@ -34,17 +34,17 @@ class FunctionPriorityDelegate: public AbstractPriorityDelegate<TArgs>
 	/// for use as a PriorityDelegate.
 {
 public:
-	typedef void (*NotifyFunction)(const void*, TArgs&);
+	typedef void (*NotifyMethod)(const void*, TArgs&);
 
-	FunctionPriorityDelegate(NotifyFunction function, int prio):
+	FunctionPriorityDelegate(NotifyMethod method, int prio):
 		AbstractPriorityDelegate<TArgs>(prio),
-		_function(function)
+		_receiverMethod(method)
 	{
 	}
 	
 	FunctionPriorityDelegate(const FunctionPriorityDelegate& delegate):
 		AbstractPriorityDelegate<TArgs>(delegate),
-		_function(delegate._function)
+		_receiverMethod(delegate._receiverMethod)
 	{
 	}
 	
@@ -52,8 +52,9 @@ public:
 	{
 		if (&delegate != this)
 		{
-			this->_function = delegate._function;
-			this->_priority = delegate._priority;
+			this->_pTarget        = delegate._pTarget;
+			this->_receiverMethod = delegate._receiverMethod;
+			this->_priority       = delegate._priority;
 		}
 		return *this;
 	}
@@ -65,9 +66,9 @@ public:
 	bool notify(const void* sender, TArgs& arguments)
 	{
 		Mutex::ScopedLock lock(_mutex);
-		if (_function)
+		if (_receiverMethod)
 		{
-			(*_function)(sender, arguments);
+			(*_receiverMethod)(sender, arguments);
 			return true;
 		}
 		else return false;
@@ -76,7 +77,7 @@ public:
 	bool equals(const AbstractDelegate<TArgs>& other) const
 	{
 		const FunctionPriorityDelegate* pOtherDelegate = dynamic_cast<const FunctionPriorityDelegate*>(other.unwrap());
-		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _function == pOtherDelegate->_function;
+		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _receiverMethod == pOtherDelegate->_receiverMethod;
 	}
 
 	AbstractDelegate<TArgs>* clone() const
@@ -87,11 +88,11 @@ public:
 	void disable()
 	{
 		Mutex::ScopedLock lock(_mutex);
-		_function = 0;
+		_receiverMethod = 0;
 	}
 
 protected:
-	NotifyFunction _function;
+	NotifyMethod _receiverMethod;
 	Mutex _mutex;
 
 private:
@@ -103,17 +104,17 @@ template <class TArgs>
 class FunctionPriorityDelegate<TArgs, true, false>: public AbstractPriorityDelegate<TArgs>
 {
 public:
-	typedef void (*NotifyFunction)(void*, TArgs&);
+	typedef void (*NotifyMethod)(void*, TArgs&);
 
-	FunctionPriorityDelegate(NotifyFunction function, int prio):
+	FunctionPriorityDelegate(NotifyMethod method, int prio):
 		AbstractPriorityDelegate<TArgs>(prio),
-		_function(function)
+		_receiverMethod(method)
 	{
 	}
 	
 	FunctionPriorityDelegate(const FunctionPriorityDelegate& delegate):
 		AbstractPriorityDelegate<TArgs>(delegate),
-		_function(delegate._function)
+		_receiverMethod(delegate._receiverMethod)
 	{
 	}
 	
@@ -121,8 +122,9 @@ public:
 	{
 		if (&delegate != this)
 		{
-			this->_function = delegate._function;
-			this->_priority = delegate._priority;
+			this->_pTarget        = delegate._pTarget;
+			this->_receiverMethod = delegate._receiverMethod;
+			this->_priority       = delegate._priority;
 		}
 		return *this;
 	}
@@ -134,9 +136,9 @@ public:
 	bool notify(const void* sender, TArgs& arguments)
 	{
 		Mutex::ScopedLock lock(_mutex);
-		if (_function)
+		if (_receiverMethod)
 		{
-			(*_function)(const_cast<void*>(sender), arguments);
+			(*_receiverMethod)(const_cast<void*>(sender), arguments);
 			return true;
 		}
 		else return false;
@@ -145,7 +147,7 @@ public:
 	bool equals(const AbstractDelegate<TArgs>& other) const
 	{
 		const FunctionPriorityDelegate* pOtherDelegate = dynamic_cast<const FunctionPriorityDelegate*>(other.unwrap());
-		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _function == pOtherDelegate->_function;
+		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _receiverMethod == pOtherDelegate->_receiverMethod;
 	}
 
 	AbstractDelegate<TArgs>* clone() const
@@ -156,11 +158,11 @@ public:
 	void disable()
 	{
 		Mutex::ScopedLock lock(_mutex);
-		_function = 0;
+		_receiverMethod = 0;
 	}
 
 protected:
-	NotifyFunction _function;
+	NotifyMethod _receiverMethod;
 	Mutex _mutex;
 
 private:
@@ -172,17 +174,17 @@ template <class TArgs>
 class FunctionPriorityDelegate<TArgs, false>: public AbstractPriorityDelegate<TArgs>
 {
 public:
-	typedef void (*NotifyFunction)(TArgs&);
+	typedef void (*NotifyMethod)(TArgs&);
 
-	FunctionPriorityDelegate(NotifyFunction function, int prio):
+	FunctionPriorityDelegate(NotifyMethod method, int prio):
 		AbstractPriorityDelegate<TArgs>(prio),
-		_function(function)
+		_receiverMethod(method)
 	{
 	}
 	
 	FunctionPriorityDelegate(const FunctionPriorityDelegate& delegate):
 		AbstractPriorityDelegate<TArgs>(delegate),
-		_function(delegate._function)
+		_receiverMethod(delegate._receiverMethod)
 	{
 	}
 	
@@ -190,8 +192,9 @@ public:
 	{
 		if (&delegate != this)
 		{
-			this->_function = delegate._function;
-			this->_priority = delegate._priority;
+			this->_pTarget        = delegate._pTarget;
+			this->_receiverMethod = delegate._receiverMethod;
+			this->_priority       = delegate._priority;
 		}
 		return *this;
 	}
@@ -203,9 +206,9 @@ public:
 	bool notify(const void* sender, TArgs& arguments)
 	{
 		Mutex::ScopedLock lock(_mutex);
-		if (_function)
+		if (_receiverMethod)
 		{
-			(*_function)(arguments);
+			(*_receiverMethod)(arguments);
 			return true;
 		}
 		else return false;
@@ -214,7 +217,7 @@ public:
 	bool equals(const AbstractDelegate<TArgs>& other) const
 	{
 		const FunctionPriorityDelegate* pOtherDelegate = dynamic_cast<const FunctionPriorityDelegate*>(other.unwrap());
-		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _function == pOtherDelegate->_function;
+		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _receiverMethod == pOtherDelegate->_receiverMethod;
 	}
 
 	AbstractDelegate<TArgs>* clone() const
@@ -225,11 +228,11 @@ public:
 	void disable()
 	{
 		Mutex::ScopedLock lock(_mutex);
-		_function = 0;
+		_receiverMethod = 0;
 	}
 
 protected:
-	NotifyFunction _function;
+	NotifyMethod _receiverMethod;
 	Mutex _mutex;
 
 private:
@@ -238,22 +241,22 @@ private:
 
 
 template <>
-class FunctionPriorityDelegate<void, true, true>: public AbstractPriorityDelegate<void>
+class FunctionPriorityDelegate<void,true,true>: public AbstractPriorityDelegate<void>
 	/// Wraps a freestanding function or static member function
 	/// for use as a PriorityDelegate.
 {
 public:
-	typedef void (*NotifyFunction)(const void*);
+	typedef void (*NotifyMethod)(const void*);
 
-	FunctionPriorityDelegate(NotifyFunction function, int prio):
+	FunctionPriorityDelegate(NotifyMethod method, int prio):
 		AbstractPriorityDelegate<void>(prio),
-		_function(function)
+		_receiverMethod(method)
 	{
 	}
 
 	FunctionPriorityDelegate(const FunctionPriorityDelegate& delegate):
 		AbstractPriorityDelegate<void>(delegate),
-		_function(delegate._function)
+		_receiverMethod(delegate._receiverMethod)
 	{
 	}
 
@@ -261,8 +264,8 @@ public:
 	{
 		if (&delegate != this)
 		{
-			this->_function = delegate._function;
-			this->_priority = delegate._priority;
+			this->_receiverMethod = delegate._receiverMethod;
+			this->_priority       = delegate._priority;
 		}
 		return *this;
 	}
@@ -274,9 +277,9 @@ public:
 	bool notify(const void* sender)
 	{
 		Mutex::ScopedLock lock(_mutex);
-		if (_function)
+		if (_receiverMethod)
 		{
-			(*_function)(sender);
+			(*_receiverMethod)(sender);
 			return true;
 		}
 		else return false;
@@ -285,7 +288,7 @@ public:
 	bool equals(const AbstractDelegate<void>& other) const
 	{
 		const FunctionPriorityDelegate* pOtherDelegate = dynamic_cast<const FunctionPriorityDelegate*>(other.unwrap());
-		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _function == pOtherDelegate->_function;
+		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _receiverMethod == pOtherDelegate->_receiverMethod;
 	}
 
 	AbstractDelegate<void>* clone() const
@@ -296,11 +299,11 @@ public:
 	void disable()
 	{
 		Mutex::ScopedLock lock(_mutex);
-		_function = 0;
+		_receiverMethod = 0;
 	}
 
 protected:
-	NotifyFunction _function;
+	NotifyMethod _receiverMethod;
 	Mutex _mutex;
 
 private:
@@ -312,17 +315,17 @@ template <>
 class FunctionPriorityDelegate<void, true, false>: public AbstractPriorityDelegate<void>
 {
 public:
-	typedef void (*NotifyFunction)(void*);
+	typedef void (*NotifyMethod)(void*);
 
-	FunctionPriorityDelegate(NotifyFunction function, int prio):
+	FunctionPriorityDelegate(NotifyMethod method, int prio):
 		AbstractPriorityDelegate<void>(prio),
-		_function(function)
+		_receiverMethod(method)
 	{
 	}
 
 	FunctionPriorityDelegate(const FunctionPriorityDelegate& delegate):
 		AbstractPriorityDelegate<void>(delegate),
-		_function(delegate._function)
+		_receiverMethod(delegate._receiverMethod)
 	{
 	}
 
@@ -330,8 +333,8 @@ public:
 	{
 		if (&delegate != this)
 		{
-			this->_function = delegate._function;
-			this->_priority = delegate._priority;
+			this->_receiverMethod = delegate._receiverMethod;
+			this->_priority       = delegate._priority;
 		}
 		return *this;
 	}
@@ -343,9 +346,9 @@ public:
 	bool notify(const void* sender)
 	{
 		Mutex::ScopedLock lock(_mutex);
-		if (_function)
+		if (_receiverMethod)
 		{
-			(*_function)(const_cast<void*>(sender));
+			(*_receiverMethod)(const_cast<void*>(sender));
 			return true;
 		}
 		else return false;
@@ -354,7 +357,7 @@ public:
 	bool equals(const AbstractDelegate<void>& other) const
 	{
 		const FunctionPriorityDelegate* pOtherDelegate = dynamic_cast<const FunctionPriorityDelegate*>(other.unwrap());
-		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _function == pOtherDelegate->_function;
+		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _receiverMethod == pOtherDelegate->_receiverMethod;
 	}
 
 	AbstractDelegate<void>* clone() const
@@ -365,11 +368,11 @@ public:
 	void disable()
 	{
 		Mutex::ScopedLock lock(_mutex);
-		_function = 0;
+		_receiverMethod = 0;
 	}
 
 protected:
-	NotifyFunction _function;
+	NotifyMethod _receiverMethod;
 	Mutex _mutex;
 
 private:
@@ -381,17 +384,17 @@ template <>
 class FunctionPriorityDelegate<void, false>: public AbstractPriorityDelegate<void>
 {
 public:
-	typedef void (*NotifyFunction)();
+	typedef void (*NotifyMethod)();
 
-	FunctionPriorityDelegate(NotifyFunction function, int prio):
+	FunctionPriorityDelegate(NotifyMethod method, int prio):
 		AbstractPriorityDelegate<void>(prio),
-		_function(function)
+		_receiverMethod(method)
 	{
 	}
 
 	FunctionPriorityDelegate(const FunctionPriorityDelegate& delegate):
 		AbstractPriorityDelegate<void>(delegate),
-		_function(delegate._function)
+		_receiverMethod(delegate._receiverMethod)
 	{
 	}
 
@@ -399,8 +402,8 @@ public:
 	{
 		if (&delegate != this)
 		{
-			this->_function = delegate._function;
-			this->_priority = delegate._priority;
+			this->_receiverMethod = delegate._receiverMethod;
+			this->_priority       = delegate._priority;
 		}
 		return *this;
 	}
@@ -412,9 +415,9 @@ public:
 	bool notify(const void* sender)
 	{
 		Mutex::ScopedLock lock(_mutex);
-		if (_function)
+		if (_receiverMethod)
 		{
-			(*_function)();
+			(*_receiverMethod)();
 			return true;
 		}
 		else return false;
@@ -423,7 +426,7 @@ public:
 	bool equals(const AbstractDelegate<void>& other) const
 	{
 		const FunctionPriorityDelegate* pOtherDelegate = dynamic_cast<const FunctionPriorityDelegate*>(other.unwrap());
-		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _function == pOtherDelegate->_function;
+		return pOtherDelegate && this->priority() == pOtherDelegate->priority() && _receiverMethod == pOtherDelegate->_receiverMethod;
 	}
 
 	AbstractDelegate<void>* clone() const
@@ -434,17 +437,16 @@ public:
 	void disable()
 	{
 		Mutex::ScopedLock lock(_mutex);
-		_function = 0;
+		_receiverMethod = 0;
 	}
 
 protected:
-	NotifyFunction _function;
+	NotifyMethod _receiverMethod;
 	Mutex _mutex;
 
 private:
 	FunctionPriorityDelegate();
 };
-
 
 } // namespace Poco
 

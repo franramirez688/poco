@@ -37,7 +37,7 @@
 		ProgramDataBaseFileName="${project.outdir}\lib\${project.target}mdd.pdb"
 		WarningLevel="3"
 		Detect64BitPortabilityProblems="false"
-		DebugInformationFormat="3"
+		DebugInformationFormat="4"
 		CompileAs="0"
 		DisableSpecificWarnings="${configuration.compiler.disableWarnings}"
 		AdditionalOptions="${configuration.compiler.additionalOptions}"

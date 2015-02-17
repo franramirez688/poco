@@ -65,16 +65,14 @@ std::string PathImpl::systemImpl()
 std::string PathImpl::homeImpl()
 {
 	std::string result;
-	if (EnvironmentImpl::hasImpl("USERPROFILE"))
-	{
-		result = EnvironmentImpl::getImpl("USERPROFILE");
-	}
-	else if (EnvironmentImpl::hasImpl("HOMEDRIVE") && EnvironmentImpl::hasImpl("HOMEPATH"))
+	
+	// windows service has no home dir, return system directory instead
+	try
 	{
 		result = EnvironmentImpl::getImpl("HOMEDRIVE");
 		result.append(EnvironmentImpl::getImpl("HOMEPATH"));
 	}
-	else
+	catch (NotFoundException&) 
 	{
 		result = systemImpl();
 	}
@@ -85,59 +83,6 @@ std::string PathImpl::homeImpl()
 	return result;
 }
 
-
-std::string PathImpl::configHomeImpl()
-{
-	std::string result;
-
-	// if APPDATA environment variable no exist, return home directory instead
-	try
-	{
-		result = EnvironmentImpl::getImpl("APPDATA");
-	}
-	catch (NotFoundException&)
-	{
-		result = homeImpl();
-	}
-
-	std::string::size_type n = result.size();
-	if (n > 0 && result[n - 1] != '\\')
-		result.append("\\");
-	return result;
-}
-
-
-std::string PathImpl::dataHomeImpl()
-{
-	std::string result;
-
-	// if LOCALAPPDATA environment variable no exist, return config home instead
-	try
-	{
-		result = EnvironmentImpl::getImpl("LOCALAPPDATA");
-	}
-	catch (NotFoundException&)
-	{
-		result = configHomeImpl();
-	}
-
-	std::string::size_type n = result.size();
-	if (n > 0 && result[n - 1] != '\\')
-		result.append("\\");
-	return result;
-}
-
-
-std::string PathImpl::cacheHomeImpl()
-{
-	return tempImpl();
-}
-
-
-std::string PathImpl::tempHomeImpl()
-{
-	return tempImpl();
-}
 
 std::string PathImpl::tempImpl()
 {
@@ -156,26 +101,6 @@ std::string PathImpl::tempImpl()
 	throw SystemException("Cannot get temporary directory path");
 }
 
-
-std::string PathImpl::configImpl()
-{
-	std::string result;
-
-	// if PROGRAMDATA environment variable not exist, return system directory instead
-	try
-	{
-		result = EnvironmentImpl::getImpl("PROGRAMDATA");
-	}
-	catch (NotFoundException&)
-	{
-		result = systemImpl();
-	}
-
-	std::string::size_type n = result.size();
-	if (n > 0 && result[n - 1] != '\\')
-		result.append("\\");
-	return result;
-}
 
 std::string PathImpl::nullImpl()
 {

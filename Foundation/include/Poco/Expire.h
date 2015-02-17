@@ -108,7 +108,6 @@ private:
 	Expire();
 };
 
-
 template <>
 class Expire<void>: public AbstractDelegate<void>
 	/// Decorator for AbstractDelegate adding automatic 
@@ -188,6 +187,7 @@ protected:
 private:
 	Expire();
 };
+
 
 
 } // namespace Poco

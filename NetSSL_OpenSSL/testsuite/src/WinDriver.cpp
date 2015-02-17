@@ -15,7 +15,7 @@
 #include "WinTestRunner/WinTestRunner.h"
 #include "NetSSLTestSuite.h"
 #include "Poco/Util/Application.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPStreamFactory.h"
+#include "Poco/Net/HTTPStreamFactory.h"
 #include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSStreamFactory.h"
 
 

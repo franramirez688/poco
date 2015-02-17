@@ -10,6 +10,9 @@
 //
 
 
+#if !defined(_WIN32_WCE)
+
+
 #include "WinRegistryTest.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
@@ -128,3 +131,6 @@ CppUnit::Test* WinRegistryTest::suite()
 
 	return pSuite;
 }
+
+
+#endif // _WIN32_WCE

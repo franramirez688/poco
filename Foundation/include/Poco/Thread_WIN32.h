@@ -22,7 +22,6 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Runnable.h"
-#include "Poco/SharedPtr.h"
 #include "Poco/UnWindows.h"
 
 
@@ -40,6 +39,16 @@ public:
 #else
 	typedef unsigned (__stdcall *Entry)(void*);
 #endif
+
+	struct CallbackData
+	{
+		CallbackData(): callback(0), pData(0)
+		{
+		}
+
+		Callable  callback;
+		void*     pData; 
+	};
 
 	enum Priority
 	{
@@ -67,7 +76,9 @@ public:
 	static int getMaxOSPriorityImpl(int policy);
 	void setStackSizeImpl(int size);
 	int getStackSizeImpl() const;
-	void startImpl(SharedPtr<Runnable> pTarget);
+	void startImpl(Runnable& target);
+	void startImpl(Callable target, void* pData = 0);
+
 	void joinImpl();
 	bool joinImpl(long milliseconds);
 	bool isRunningImpl() const;
@@ -81,6 +92,12 @@ protected:
 	static DWORD WINAPI runnableEntry(LPVOID pThread);
 #else
 	static unsigned __stdcall runnableEntry(void* pThread);
+#endif
+
+#if defined(_DLL)
+	static DWORD WINAPI callableEntry(LPVOID pThread);
+#else
+	static unsigned __stdcall callableEntry(void* pThread);
 #endif
 
 	void createImpl(Entry ent, void* pData);
@@ -112,11 +129,12 @@ private:
 		DWORD _slot;
 	};
 
-	SharedPtr<Runnable> _pRunnableTarget;
-	HANDLE _thread;
-	DWORD _threadId;
-	int _prio;
-	int _stackSize;
+	Runnable*    _pRunnableTarget;
+	CallbackData _callbackTarget;
+	HANDLE       _thread;
+	DWORD        _threadId;
+	int          _prio;
+	int          _stackSize;
 
 	static CurrentThreadHolder _currentThreadHolder;
 };

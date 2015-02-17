@@ -65,7 +65,6 @@ public:
 	}
 };
 
-
 template <> 
 class AbstractDelegate<void>
 	/// Base class for Delegate and Expire.
@@ -104,7 +103,6 @@ public:
 		return this;
 	}
 };
-
 
 } // namespace Poco
 

@@ -43,10 +43,10 @@ public:
 	virtual ~SocketNotification();
 		/// Destroys the SocketNotification.
 		
-	SocketReactor& source() const;
+	SocketReactor& source();
 		/// Returns the SocketReactor that generated the notification.	
 		
-	Socket socket() const;
+	Socket& socket();
 		/// Returns the socket that caused the notification.
 
 private:
@@ -137,13 +137,13 @@ public:
 //
 // inlines
 //
-inline SocketReactor& SocketNotification::source() const
+inline SocketReactor& SocketNotification::source()
 {
 	return *_pReactor;
 }
 
 	
-inline Socket SocketNotification::socket() const
+inline Socket& SocketNotification::socket()
 {
 	return _socket;
 }

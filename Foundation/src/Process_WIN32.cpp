@@ -247,7 +247,7 @@ void ProcessImpl::killImpl(PIDImpl pid)
 		{
 		case ERROR_ACCESS_DENIED:
 			throw NoPermissionException("cannot kill process");
-		case ERROR_INVALID_PARAMETER: 
+		case ERROR_NOT_FOUND: 
 			throw NotFoundException("cannot kill process");
 		default:
 			throw SystemException("cannot kill process");

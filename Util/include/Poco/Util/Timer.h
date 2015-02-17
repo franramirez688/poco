@@ -154,8 +154,7 @@ public:
 
 protected:
 	void run();
-	static void validateTask(const TimerTask::Ptr& pTask);
-	
+		
 private:
 	Timer(const Timer&);
 	Timer& operator = (const Timer&);

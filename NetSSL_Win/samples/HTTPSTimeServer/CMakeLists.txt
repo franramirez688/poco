@@ -1,4 +1,4 @@
-set(SAMPLE_NAME "HTTPSTimeServer-win")
+set(SAMPLE_NAME "HTTPSTimeServer")
 
 set(LOCAL_SRCS "")
 aux_source_directory(src LOCAL_SRCS)

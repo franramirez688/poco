@@ -14,7 +14,7 @@
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSStreamFactory.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetException.h"
+#include "Poco/Net/NetException.h"
 #include "Poco/Util/Application.h"
 #include "Poco/Util/AbstractConfiguration.h"
 #include "Poco/URI.h"

@@ -50,10 +50,7 @@ public:
 		/// not yet run, or has not yet been scheduled, it will never run. 
 		/// If the task has been scheduled for repeated execution, it will never 
 		/// run again. If the task is running when this call occurs, the task 
-		/// will run to completion, but will never run again.
-		///
-		/// Warning: A TimerTask that has been cancelled must not be scheduled again.
-		/// An attempt to do so results in a Poco::Util::IllegalStateException being thrown.
+		/// will run to completion, but will never run again.	
 	
 	bool isCancelled() const;
 		/// Returns true iff the TimerTask has been cancelled by a call

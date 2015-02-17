@@ -1,7 +1,7 @@
 //
 // HTTPSClientSession.cpp
 //
-// $Id: //poco/1.4/NetSSL_Win/src/HTTPSClientSession.cpp#4 $
+// $Id: //poco/1.4/NetSSL_Win/src/HTTPSClientSession.cpp#3 $
 //
 // Library: NetSSL_Win
 // Package: HTTPSClient
@@ -145,7 +145,7 @@ void HTTPSClientSession::proxyAuthenticate(HTTPRequest& request)
 
 void HTTPSClientSession::connect(const SocketAddress& address)
 {
-	if (getProxyHost().empty() || bypassProxy())
+	if (getProxyHost().empty())
 	{
 		SecureStreamSocket sss(socket());
 		if (_pContext->sessionCacheEnabled())
@@ -176,8 +176,7 @@ int HTTPSClientSession::read(char* buffer, std::streamsize length)
 	try
 	{
 		return HTTPSession::read(buffer, length);
-	} 
-	catch(SSLConnectionUnexpectedlyClosedException&)
+	} catch(SSLConnectionUnexpectedlyClosedException&)
 	{
 		return 0;
 	}

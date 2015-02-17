@@ -13,7 +13,7 @@
 #include "HTTPSStreamFactoryTest.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
-#include "Poco/Net/HTTPSStreamFactory.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/HTTPSStreamFactory.h"
 #include "Poco/Net/NetException.h"
 #include "Poco/Util/Application.h"
 #include "Poco/Util/AbstractConfiguration.h"

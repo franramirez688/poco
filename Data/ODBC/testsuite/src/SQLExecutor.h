@@ -115,7 +115,6 @@ public:
 		/// (e.g. SQLGetData() restrictions relaxation policy, if any). 
 		/// If these test pass, subsequent tests failures are likely ours.
 
-	void zeroRows();
 	void simpleAccess();
 	void complexType();
 	void complexTypeTuple();

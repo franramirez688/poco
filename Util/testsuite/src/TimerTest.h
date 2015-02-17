@@ -28,17 +28,13 @@ public:
 	TimerTest(const std::string& name);
 	~TimerTest();
 
-	void testScheduleTimestamp();
-	void testScheduleClock();
+	void testSchedule();
 	void testScheduleInterval();
 	void testScheduleAtFixedRate();
-	void testScheduleIntervalTimestamp();
-	void testScheduleIntervalClock();
-	void testCancel();
 
 	void setUp();
 	void tearDown();
-
+	
 	void onTimer(Poco::Util::TimerTask& task);
 
 	static CppUnit::Test* suite();

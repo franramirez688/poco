@@ -29,12 +29,7 @@
 namespace Poco {
 
 
-Event::Event(EventType type): EventImpl((EventTypeImpl) type)
-{
-}
-
-
-Event::Event(bool autoReset): EventImpl(autoReset ? EVENT_AUTORESET_IMPL : EVENT_MANUALRESET_IMPL)
+Event::Event(bool autoReset): EventImpl(autoReset)
 {
 }
 

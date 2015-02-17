@@ -68,8 +68,6 @@ namespace Net {
 
 
 const std::string HTTPAuthenticationParams::REALM("realm");
-const std::string HTTPAuthenticationParams::WWW_AUTHENTICATE("WWW-Authenticate");
-const std::string HTTPAuthenticationParams::PROXY_AUTHENTICATE("Proxy-Authenticate");
 
 
 HTTPAuthenticationParams::HTTPAuthenticationParams()
@@ -89,9 +87,9 @@ HTTPAuthenticationParams::HTTPAuthenticationParams(const HTTPRequest& request)
 }
 
 
-HTTPAuthenticationParams::HTTPAuthenticationParams(const HTTPResponse& response, const std::string& header)
+HTTPAuthenticationParams::HTTPAuthenticationParams(const HTTPResponse& response)
 {
-	fromResponse(response, header);
+	fromResponse(response);
 }
 
 
@@ -128,29 +126,22 @@ void HTTPAuthenticationParams::fromRequest(const HTTPRequest& request)
 }
 
 
-void HTTPAuthenticationParams::fromResponse(const HTTPResponse& response, const std::string& header)
+void HTTPAuthenticationParams::fromResponse(const HTTPResponse& response)
 {
-	NameValueCollection::ConstIterator it = response.find(header);
-	if (it == response.end())
+	if (!response.has("WWW-Authenticate")) 
 		throw NotAuthenticatedException("HTTP response has no authentication header");
 
-	bool found = false;
-	while (!found && it != response.end() && icompare(it->first, header) == 0)
+	const std::string& header = response.get("WWW-Authenticate");
+
+	if (icompare(header, 0, 6, "Basic ") == 0) 
 	{
-		const std::string& header = it->second;
-		if (icompare(header, 0, 6, "Basic ") == 0) 
-		{
-			parse(header.begin() + 6, header.end());
-			found = true;
-		} 
-		else if (icompare(header, 0, 7, "Digest ") == 0)
-		{
-			parse(header.begin() + 7, header.end());
-			found = true;
-		} 
-		++it;
-	}
-	if (!found) throw NotAuthenticatedException("No Basic or Digest authentication header found");
+		parse(header.begin() + 6, header.end());
+	} 
+	else if (icompare(header, 0, 7, "Digest ") == 0)
+	{
+		parse(header.begin() + 7, header.end());
+	} 
+	else throw InvalidArgumentException("Invalid authentication scheme", header);
 }
 
 
@@ -212,7 +203,7 @@ void HTTPAuthenticationParams::parse(std::string::const_iterator first, std::str
 		switch (state) 
 		{
 		case STATE_SPACE:
-			if (Ascii::isAlphaNumeric(*it) || *it == '_') 
+			if (Ascii::isAlphaNumeric(*it)) 
 			{
 				token += *it;
 				state = STATE_TOKEN;
@@ -229,7 +220,7 @@ void HTTPAuthenticationParams::parse(std::string::const_iterator first, std::str
 			{
 				state = STATE_EQUALS;
 			} 
-			else if (Ascii::isAlphaNumeric(*it) || *it == '_') 
+			else if (Ascii::isAlphaNumeric(*it)) 
 			{
 				token += *it;
 			} 
@@ -237,7 +228,7 @@ void HTTPAuthenticationParams::parse(std::string::const_iterator first, std::str
 			break;
 
 		case STATE_EQUALS:
-			if (Ascii::isAlphaNumeric(*it) || *it == '_') 
+			if (Ascii::isAlphaNumeric(*it)) 
 			{
 				value += *it;
 				state = STATE_VALUE;

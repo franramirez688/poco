@@ -6,5 +6,4 @@ vc.solution.include = \
 	RecordSet\\RecordSet;\
 	RowFormatter\\RowFormatter;\
 	Tuple\\Tuple;\
-	TypeHandler\\TypeHandler;\
-	WebNotifier\\WebNotifier\
+	TypeHandler\\TypeHandler

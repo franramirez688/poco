@@ -22,10 +22,8 @@
 
 #include "Poco/Crypto/Crypto.h"
 #include "Poco/Mutex.h"
-#include "Poco/AtomicCounter.h"
-#include <openssl/crypto.h>
-#include <openssl/opensslv.h>
-#if defined(OPENSSL_FIPS) && OPENSSL_VERSION_NUMBER < 0x010001000L
+#include <openssl/opensslconf.h>
+#ifdef OPENSSL_FIPS
 #include <openssl/fips.h>
 #endif
 
@@ -83,7 +81,8 @@ protected:
 
 private:
 	static Poco::FastMutex* _mutexes;
-	static Poco::AtomicCounter _rc;
+	static Poco::FastMutex _mutex;
+	static int _rc;
 };
 
 
@@ -109,7 +108,6 @@ inline void OpenSSLInitializer::enableFIPSMode(bool /*enabled*/)
 {
 }
 #endif
-
 
 } } // namespace Poco::Crypto
 

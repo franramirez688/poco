@@ -142,7 +142,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_shared|SDK_AM335X_SK_WEC2013_V300'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -170,7 +170,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_static_md|SDK_AM335X_SK_WEC2013_V300'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -251,7 +251,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_static_mt|SDK_AM335X_SK_WEC2013_V300'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -340,7 +340,6 @@
     <ClCompile Include="src\ActiveMethodTest.cpp" />
     <ClCompile Include="src\ActivityTest.cpp" />
     <ClCompile Include="src\ConditionTest.cpp" />
-    <ClCompile Include="src\MutexTest.cpp" />
     <ClCompile Include="src\RWLockTest.cpp" />
     <ClCompile Include="src\SemaphoreTest.cpp" />
     <ClCompile Include="src\ThreadingTestSuite.cpp" />
@@ -478,7 +477,6 @@
     <ClInclude Include="src\ActiveMethodTest.h" />
     <ClInclude Include="src\ActivityTest.h" />
     <ClInclude Include="src\ConditionTest.h" />
-    <ClInclude Include="src\MutexTest.h" />
     <ClInclude Include="src\RWLockTest.h" />
     <ClInclude Include="src\SemaphoreTest.h" />
     <ClInclude Include="src\ThreadingTestSuite.h" />

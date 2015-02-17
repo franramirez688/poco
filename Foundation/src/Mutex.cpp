@@ -33,8 +33,7 @@
 namespace Poco {
 
 
-Mutex::Mutex(MutexType type)
-	: MutexImpl((MutexTypeImpl) type)
+Mutex::Mutex()
 {
 }
 

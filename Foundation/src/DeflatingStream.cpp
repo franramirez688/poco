@@ -159,7 +159,6 @@ int DeflatingStreamBuf::close()
 				_zstr.avail_out = DEFLATE_BUFFER_SIZE;
 			}
 		}
-		_pOstr->flush();
 		_pOstr = 0;
 	}
 	return 0;
@@ -189,7 +188,6 @@ int DeflatingStreamBuf::sync()
 		_zstr.next_out  = (unsigned char*) _buffer;
 		_zstr.avail_out = DEFLATE_BUFFER_SIZE;
 	}
-	_pOstr->flush();
 
 	return 0;
 }

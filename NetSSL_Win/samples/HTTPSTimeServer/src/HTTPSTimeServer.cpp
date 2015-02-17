@@ -19,9 +19,9 @@
 #include "Poco/Net/HTTPServerRequestImpl.h"
 #include "Poco/Net/HTTPServerResponse.h"
 #include "Poco/Net/HTTPServerParams.h"
-#include "Poco/Net/SecureStreamSocket.h"
-#include "Poco/Net/SecureServerSocket.h"
-#include "Poco/Net/X509Certificate.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureStreamSocket.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureServerSocket.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/X509Certificate.h"
 #include "Poco/Timestamp.h"
 #include "Poco/DateTimeFormatter.h"
 #include "Poco/DateTimeFormat.h"
@@ -31,8 +31,8 @@
 #include "Poco/Util/Option.h"
 #include "Poco/Util/OptionSet.h"
 #include "Poco/Util/HelpFormatter.h"
-#include "Poco/Net/SSLManager.h"
-#include "Poco/Net/AcceptCertificateHandler.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLManager.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/AcceptCertificateHandler.h"
 #include <iostream>
 
 

@@ -144,14 +144,7 @@ std::size_t StatementImpl::executeWithLimit()
 	else 
 		_state = ST_PAUSED;
 
-	int affectedRows = affectedRowCount();
-	if (count == 0)
-	{
-		if (affectedRows > 0)
-			return affectedRows;
-	}
-
-	return count;
+	return count ? count : affectedRowCount();
 }
 
 
@@ -166,14 +159,7 @@ std::size_t StatementImpl::executeWithoutLimit()
 		while (hasNext()) count += next();
 	} while (canBind());
 
-	int affectedRows = affectedRowCount();
-	if (count == 0)
-	{
-		if (affectedRows > 0)
-			return affectedRows;
-	}
-
-	return count;
+	return count ? count : affectedRowCount();
 }
 
 

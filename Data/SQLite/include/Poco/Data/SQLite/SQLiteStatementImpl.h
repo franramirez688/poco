@@ -28,11 +28,8 @@
 #include "Poco/SharedPtr.h"
 
 
-extern "C"
-{
-	typedef struct sqlite3 sqlite3;
-	typedef struct sqlite3_stmt sqlite3_stmt;
-}
+struct sqlite3;
+struct sqlite3_stmt;
 
 
 namespace Poco {
@@ -54,7 +51,7 @@ protected:
 	std::size_t columnsReturned() const;
 		/// Returns number of columns returned by query.
 
-	int affectedRowCount() const;
+	std::size_t affectedRowCount() const;
 		/// Returns the number of affected rows.
 		/// Used to find out the number of rows affected by insert, delete or update.
 		/// All changes are counted, even if they are later undone by a ROLLBACK or ABORT. 
@@ -113,14 +110,14 @@ private:
 	BinderPtr        _pBinder;
 	ExtractorPtr     _pExtractor;
 	MetaColumnVecVec _columns;
-	int              _affectedRowCount;
+	std::size_t      _affectedRowCount;
 	StrPtr           _pLeftover;
 	BindIt           _bindBegin;
 	bool             _canBind;
 	bool             _isExtracted;
 	bool             _canCompile;
 
-	static const int POCO_SQLITE_INV_ROW_CNT;
+	static const std::size_t POCO_SQLITE_INV_ROW_CNT;
 };
 
 

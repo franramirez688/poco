@@ -16,7 +16,7 @@
 #include "NetSSLTestSuite.h"
 #include "Poco/Util/Application.h"
 #include "Poco/Net/HTTPStreamFactory.h"
-#include "Poco/Net/HTTPSStreamFactory.h"
+#include "fenix/poco/NetSSL_Win/include/Poco/Net/HTTPSStreamFactory.h"
 #include <iostream>
 
 

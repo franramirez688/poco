@@ -19,13 +19,12 @@
 #include "Poco/Thread.h"
 
 
-using Poco::Event;
 using Poco::ThreadPool;
 using Poco::RunnableAdapter;
 using Poco::Thread;
 
 
-ThreadPoolTest::ThreadPoolTest(const std::string& name): CppUnit::TestCase(name), _event(Event::EVENT_MANUALRESET)
+ThreadPoolTest::ThreadPoolTest(const std::string& name): CppUnit::TestCase(name), _event(false)
 {
 }
 

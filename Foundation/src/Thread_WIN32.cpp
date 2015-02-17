@@ -70,6 +70,7 @@ ThreadImpl::CurrentThreadHolder ThreadImpl::_currentThreadHolder;
 
 
 ThreadImpl::ThreadImpl():
+	_pRunnableTarget(0),
 	_thread(0),
 	_threadId(0),
 	_prio(PRIO_NORMAL_IMPL),
@@ -104,13 +105,27 @@ void ThreadImpl::setOSPriorityImpl(int prio, int /* policy */)
 }
 
 
-void ThreadImpl::startImpl(SharedPtr<Runnable> pTarget)
+void ThreadImpl::startImpl(Runnable& target)
 {
 	if (isRunningImpl())
 		throw SystemException("thread already running");
 
-	_pRunnableTarget = pTarget;
+	_pRunnableTarget = &target;
+
 	createImpl(runnableEntry, this);
+}
+
+
+void ThreadImpl::startImpl(Callable target, void* pData)
+{
+	if (isRunningImpl())
+		throw SystemException("thread already running");
+
+	threadCleanup();
+	_callbackTarget.callback = target;
+	_callbackTarget.pData = pData;
+
+	createImpl(callableEntry, this);
 }
 
 
@@ -205,6 +220,37 @@ unsigned __stdcall ThreadImpl::runnableEntry(void* pThread)
 	try
 	{
 		reinterpret_cast<ThreadImpl*>(pThread)->_pRunnableTarget->run();
+	}
+	catch (Exception& exc)
+	{
+		ErrorHandler::handle(exc);
+	}
+	catch (std::exception& exc)
+	{
+		ErrorHandler::handle(exc);
+	}
+	catch (...)
+	{
+		ErrorHandler::handle();
+	}
+	return 0;
+}
+
+
+#if defined(_DLL)
+DWORD WINAPI ThreadImpl::callableEntry(LPVOID pThread)
+#else
+unsigned __stdcall ThreadImpl::callableEntry(void* pThread)
+#endif
+{
+	_currentThreadHolder.set(reinterpret_cast<ThreadImpl*>(pThread));
+#if defined(POCO_WIN32_DEBUGGER_THREAD_NAMES)
+	setThreadName(-1, reinterpret_cast<Thread*>(pThread)->getName().c_str());
+#endif
+	try
+	{
+		ThreadImpl* pTI = reinterpret_cast<ThreadImpl*>(pThread);
+		pTI->_callbackTarget.callback(pTI->_callbackTarget.pData);
 	}
 	catch (Exception& exc)
 	{

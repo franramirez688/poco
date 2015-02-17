@@ -86,7 +86,7 @@ endif(WIN32)
 macro(POCO_SOURCES_PLAT out name platform)
     source_group("${name}\\Source Files" FILES ${ARGN})
     list(APPEND ${out} ${ARGN})
-    if(NOT (${platform}))
+    if(NOT ${platform})
         set_source_files_properties(${ARGN} PROPERTIES HEADER_FILE_ONLY TRUE)
     endif()
 endmacro()
@@ -181,73 +181,4 @@ macro(POCO_MESSAGES out name)
         list(APPEND ${out} ${ARGN})
 
     endif (WIN32)
-endmacro()
-
-
-#===============================================================================
-# Macros for Package generation
-#
-#  POCO_GENERATE_PACKAGE - Generates *Config.cmake
-#    Usage: POCO_GENERATE_PACKAGE(target_name)
-#      INPUT:
-#           target_name             the name of the target. e.g. Foundation for PocoFoundation
-#    Example: POCO_GENERATE_PACKAGE(Foundation)
-macro(POCO_GENERATE_PACKAGE target_name)
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(
-  "${CMAKE_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}${target_name}ConfigVersion.cmake"
-  VERSION ${PROJECT_VERSION}
-  COMPATIBILITY AnyNewerVersion
-)
-export(EXPORT "${target_name}Targets"
-  FILE "${CMAKE_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}${target_name}Targets.cmake"
-  NAMESPACE "${PROJECT_NAME}::"
-)
-configure_file("cmake/Poco${target_name}Config.cmake"
-  "${CMAKE_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}${target_name}Config.cmake"
-  @ONLY
-)
-
-set(ConfigPackageLocation "lib/cmake/${PROJECT_NAME}")
-
-install(
-    EXPORT "${target_name}Targets"
-    FILE "${PROJECT_NAME}${target_name}Targets.cmake"
-    NAMESPACE "${PROJECT_NAME}::"
-    DESTINATION "lib/cmake/${PROJECT_NAME}"
-    )
-
-install(
-    FILES
-        "${CMAKE_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}${target_name}Config.cmake"
-        "${CMAKE_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}${target_name}ConfigVersion.cmake"
-    DESTINATION "lib/cmake/${PROJECT_NAME}"
-    COMPONENT Devel
-    )
-
-endmacro()
-
-#===============================================================================
-# Macros for simplified installation
-#
-#  POCO_INSTALL - Install the given target
-#    Usage: POCO_INSTALL(target_name)
-#      INPUT:
-#           target_name             the name of the target. e.g. Foundation for PocoFoundation
-#    Example: POCO_INSTALL(Foundation)
-macro(POCO_INSTALL target_name)
-install(
-    DIRECTORY include/Poco
-    DESTINATION include
-    COMPONENT Devel
-    PATTERN ".svn" EXCLUDE
-    )
-
-install(
-    TARGETS "${target_name}" EXPORT "${target_name}Targets"
-    LIBRARY DESTINATION lib${LIB_SUFFIX}
-    ARCHIVE DESTINATION lib${LIB_SUFFIX}
-    RUNTIME DESTINATION bin
-    INCLUDES DESTINATION include
-    )
 endmacro()

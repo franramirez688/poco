@@ -136,7 +136,7 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalOptions>/FS</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -153,7 +153,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_shared|Win32'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -190,7 +190,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_static_md|Win32'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -241,7 +241,7 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalOptions>/FS</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -271,7 +271,7 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalOptions>/FS</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -289,7 +289,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_static_mt|Win32'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
@@ -388,7 +388,6 @@
     <ClCompile Include="src\ActiveMethodTest.cpp" />
     <ClCompile Include="src\ActivityTest.cpp" />
     <ClCompile Include="src\ConditionTest.cpp" />
-    <ClCompile Include="src\MutexTest.cpp" />
     <ClCompile Include="src\RWLockTest.cpp" />
     <ClCompile Include="src\SemaphoreTest.cpp" />
     <ClCompile Include="src\ThreadingTestSuite.cpp" />
@@ -526,7 +525,6 @@
     <ClInclude Include="src\ActiveMethodTest.h" />
     <ClInclude Include="src\ActivityTest.h" />
     <ClInclude Include="src\ConditionTest.h" />
-    <ClInclude Include="src\MutexTest.h" />
     <ClInclude Include="src\RWLockTest.h" />
     <ClInclude Include="src\SemaphoreTest.h" />
     <ClInclude Include="src\ThreadingTestSuite.h" />

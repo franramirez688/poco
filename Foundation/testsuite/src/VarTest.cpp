@@ -2089,20 +2089,6 @@ void VarTest::testArrayToString()
 }
 
 
-void VarTest::testArrayToStringEscape()
-{
-	std::string s1("\"quoted string\"");
-	Poco::Int8 s2(23);
-	std::vector<Var> s16;
-	s16.push_back(s1);
-	s16.push_back(s2);
-	Var a1(s16);
-	std::string res = a1.convert<std::string>();
-	std::string expected("[ \"\\\"quoted string\\\"\", 23 ]");
-	assert (res == expected);
-}
-
-
 void VarTest::testStructToString()
 {
 	DynamicStruct aStruct;
@@ -2112,18 +2098,6 @@ void VarTest::testStructToString()
 	Var a1(aStruct);
 	std::string res = a1.convert<std::string>();
 	std::string expected = "{ \"Age\" : 1, \"First Name\" : \"Junior\", \"Last Name\" : \"POCO\" }";
-	assert (res == expected);
-	assert (aStruct.toString() == res);
-}
-
-
-void VarTest::testStructToStringEscape()
-{
-	DynamicStruct aStruct;
-	aStruct["Value"] = "Value with \" and \n";
-	Var a1(aStruct);
-	std::string res = a1.convert<std::string>();
-	std::string expected = "{ \"Value\" : \"Value with \\\" and \\n\" }";
 	assert (res == expected);
 	assert (aStruct.toString() == res);
 }
@@ -2392,17 +2366,8 @@ void VarTest::testDate()
 	Poco::Timestamp tsNow = dtNow.timestamp();
 	Poco::LocalDateTime ldtNow(dtNow.timestamp());
 	Var dt(dtNow);
-	assert(dt.isDate());
-	assert(dt.isTime());
-	assert(dt.isDateTime());
 	Var ts(tsNow);
-	assert(ts.isDate());
-	assert(ts.isTime());
-	assert(ts.isDateTime());
 	Var ldt(ldtNow);
-	assert(ldt.isDate());
-	assert(ldt.isTime());
-	assert(ldt.isDateTime());
 	Var dtStr(dt.convert<std::string>());
 	Var tsStr(ts.convert<std::string>());
 	Var ldtStr(ldt.convert<std::string>());
@@ -2627,9 +2592,7 @@ CppUnit::Test* VarTest::suite()
 	CppUnit_addTest(pSuite, VarTest, testDynamicStructString);
 	CppUnit_addTest(pSuite, VarTest, testDynamicStructInt);
 	CppUnit_addTest(pSuite, VarTest, testArrayToString);
-	CppUnit_addTest(pSuite, VarTest, testArrayToStringEscape);
 	CppUnit_addTest(pSuite, VarTest, testStructToString);
-	CppUnit_addTest(pSuite, VarTest, testStructToStringEscape);
 	CppUnit_addTest(pSuite, VarTest, testArrayOfStructsToString);
 	CppUnit_addTest(pSuite, VarTest, testStructWithArraysToString);
 	CppUnit_addTest(pSuite, VarTest, testJSONDeserializeString);
