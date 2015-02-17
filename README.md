@@ -64,4 +64,4 @@ Program your code and build it:
     > bii cpp:build # This command will build your project and the POCO dependencies
 
 
-You can check [the examples/poco(v1.4.7p1) block](https://www.biicode.com/examples/examples/poco/v1.6.0) with some examples using *POCO C++ 1.6.0 version* with biicode.
+You can check [the examples/poco(v1.6.0) block](https://www.biicode.com/examples/examples/poco/v1.6.0) with some examples using *POCO C++ 1.6.0 version* with biicode.
