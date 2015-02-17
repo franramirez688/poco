@@ -1,4 +1,3 @@
-IF(NOT BIICODE)
 set(LIBNAME "Net")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -44,4 +43,3 @@ if (ENABLE_TESTS)
     add_subdirectory(testsuite)
 endif ()
 
-ENDIF(NOT BIICODE)

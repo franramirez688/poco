@@ -20,8 +20,8 @@
 #define NetSSL_InvalidCertificateHandler_INCLUDED
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/VerificationErrorArgs.h"
+#include "Poco/Net/NetSSL.h"
+#include "Poco/Net/VerificationErrorArgs.h"
 
 
 namespace Poco {

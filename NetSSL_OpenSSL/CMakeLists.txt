@@ -1,4 +1,3 @@
-IF(NOT BIICODE)
 set(LIBNAME "NetSSL")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -35,4 +34,3 @@ if (ENABLE_TESTS)
     add_subdirectory(testsuite)
 endif ()
 
-ENDIF(BIICODE)

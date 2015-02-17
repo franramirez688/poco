@@ -14,8 +14,8 @@
 //
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/PrivateKeyFactory.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLManager.h"
+#include "Poco/Net/PrivateKeyFactory.h"
+#include "Poco/Net/SSLManager.h"
 
 
 namespace Poco {

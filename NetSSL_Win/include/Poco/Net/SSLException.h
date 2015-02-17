@@ -20,7 +20,7 @@
 #define NetSSL_SSLException_INCLUDED
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "Poco/Net/NetSSL.h"
 #include "Poco/Net/NetException.h"
 
 

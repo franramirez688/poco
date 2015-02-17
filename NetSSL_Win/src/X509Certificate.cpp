@@ -14,8 +14,8 @@
 //
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/X509Certificate.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLException.h"
+#include "Poco/Net/X509Certificate.h"
+#include "Poco/Net/SSLException.h"
 #include "Poco/StreamCopier.h"
 #include "Poco/String.h"
 #include "Poco/DateTimeParser.h"

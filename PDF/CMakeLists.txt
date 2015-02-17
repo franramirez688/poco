@@ -1,11 +1,3 @@
-IF(BIICODE)
-if (POCO_UNBUNDLED)
-    find_package(ZLIB REQUIRED)
-    set(SYSLIBS ${SYSLIBS} ${ZLIB_LIBRARIES})
-    include_directories(${ZLIB_INCLUDE_DIRS})
-endif (POCO_UNBUNDLED)
-target_link_libraries(${BII_BLOCK_TARGET} INTERFACE ${SYSLIBS} )
-ELSE()
 set(LIBNAME "PDF")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -147,4 +139,3 @@ if (ENABLE_TESTS)
     add_subdirectory(testsuite)
 endif ()
 
-ENDIF(BIICODE)

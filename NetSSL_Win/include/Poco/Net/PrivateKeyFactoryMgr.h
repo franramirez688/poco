@@ -20,8 +20,8 @@
 #define NetSSL_PrivateKeyFactoryMgr_INCLUDED
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/PrivateKeyFactory.h"
+#include "Poco/Net/NetSSL.h"
+#include "Poco/Net/PrivateKeyFactory.h"
 #include "Poco/SharedPtr.h"
 #include <map>
 

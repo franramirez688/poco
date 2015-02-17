@@ -16,7 +16,7 @@
 #define HTTPSStreamFactoryTest_INCLUDED
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Net.h"
+#include "Poco/Net/Net.h"
 #include "CppUnit/TestCase.h"
 
 

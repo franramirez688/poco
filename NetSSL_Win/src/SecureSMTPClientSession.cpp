@@ -14,9 +14,9 @@
 //
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureSMTPClientSession.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/SecureStreamSocket.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLManager.h"
+#include "Poco/Net/SecureSMTPClientSession.h"
+#include "Poco/Net/SecureStreamSocket.h"
+#include "Poco/Net/SSLManager.h"
 #include "Poco/Net/DialogSocket.h"
 
 

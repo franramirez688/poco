@@ -14,7 +14,7 @@
 //
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLException.h"
+#include "Poco/Net/SSLException.h"
 #include <typeinfo>
 
 

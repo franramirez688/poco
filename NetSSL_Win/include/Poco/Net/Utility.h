@@ -20,8 +20,8 @@
 #define NetSSL_Utility_INCLUDED
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/Context.h"
+#include "Poco/Net/NetSSL.h"
+#include "Poco/Net/Context.h"
 #include <map>
 
 

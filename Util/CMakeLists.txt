@@ -1,4 +1,3 @@
-IF(NOT BIICODE)
 set(LIBNAME "Util")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -40,5 +39,3 @@ if (ENABLE_TESTS)
     add_subdirectory(samples)
     add_subdirectory(testsuite)
 endif ()
-
-ENDIF(NOT BIICODE)

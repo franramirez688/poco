@@ -14,10 +14,10 @@
 //
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/SSLManager.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/Context.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/Utility.h"
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/PrivateKeyPassphraseHandler.h"
+#include "Poco/Net/SSLManager.h"
+#include "Poco/Net/Context.h"
+#include "Poco/Net/Utility.h"
+#include "Poco/Net/PrivateKeyPassphraseHandler.h"
 #include "Poco/SingletonHolder.h"
 #include "Poco/Delegate.h"
 #include "Poco/Util/Application.h"

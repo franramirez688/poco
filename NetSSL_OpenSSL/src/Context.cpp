@@ -14,10 +14,10 @@
 //
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Context.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLException.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Utility.h"
+#include "Poco/Net/Context.h"
+#include "Poco/Net/SSLManager.h"
+#include "Poco/Net/SSLException.h"
+#include "Poco/Net/Utility.h"
 #include "Poco/Crypto/OpenSSLInitializer.h"
 #include "Poco/File.h"
 #include "Poco/Path.h"

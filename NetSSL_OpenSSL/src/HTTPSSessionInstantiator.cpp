@@ -14,9 +14,9 @@
 //
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSSessionInstantiator.h"
+#include "Poco/Net/HTTPSSessionInstantiator.h"
 #include "Poco/Net/HTTPSessionFactory.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSClientSession.h"
+#include "Poco/Net/HTTPSClientSession.h"
 
 
 namespace Poco {

@@ -1,15 +1,3 @@
-IF(BIICODE)
-    if(WINCE)
-        target_compile_definitions(${BII_BLOCK_TARGET}-DSQLITE_MSVC_LOCALTIME_API)
-    endif(WINCE)
-    target_compile_definitions(${BII_BLOCK_TARGET} INTERFACE -DSQLITE_THREADSAFE=1
-                                                             -DSQLITE_DISABLE_LFS
-                                                             -DSQLITE_OMIT_UTF16
-                                                             -DSQLITE_OMIT_PROGRESS_CALLBACK
-                                                             -DSQLITE_OMIT_COMPLETE
-                                                             -DSQLITE_OMIT_TCL_VARIABLE
-                                                             -DSQLITE_OMIT_DEPRECATED)
-ELSE()
 set(LIBNAME  "DataSQLite")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -68,4 +56,3 @@ if (ENABLE_TESTS)
     add_subdirectory(testsuite)
 endif ()
 
-ENDIF()

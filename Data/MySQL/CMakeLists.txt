@@ -1,7 +1,3 @@
-IF(BIICODE)
-    target_compile_definitions(${BII_BLOCK_TARGET} INTERFACE -DTHREADSAFE -DNO_TCL)
-    target_link_libraries( ${BII_BLOCK_TARGET} INTERFACE ${MYSQL_LIB})
-ELSE()
 set(LIBNAME "DataMySQL")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -38,5 +34,3 @@ POCO_GENERATE_PACKAGE("${LIBNAME}")
 if (ENABLE_TESTS)
     add_subdirectory(testsuite)
 endif ()
-
-ENDIF(BIICODE)

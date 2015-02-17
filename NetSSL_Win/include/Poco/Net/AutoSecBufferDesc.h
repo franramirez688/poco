@@ -20,7 +20,7 @@
 #define NetSSL_AutoSecBufferDesc_INCLUDED
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "Poco/Net/NetSSL.h"
 #include <windows.h>
 #include <wincrypt.h>
 #ifndef SECURITY_WIN32

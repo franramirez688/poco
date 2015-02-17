@@ -14,7 +14,7 @@
 //
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/AcceptCertificateHandler.h"
+#include "Poco/Net/AcceptCertificateHandler.h"
 
 
 namespace Poco {

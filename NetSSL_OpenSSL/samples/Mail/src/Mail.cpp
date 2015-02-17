@@ -12,13 +12,13 @@
 //
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/MailMessage.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/MailRecipient.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SecureSMTPClientSession.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/StringPartSource.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/SSLManager.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/KeyConsoleHandler.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/ConsoleCertificateHandler.h"
+#include "Poco/Net/MailMessage.h"
+#include "Poco/Net/MailRecipient.h"
+#include "Poco/Net/SecureSMTPClientSession.h"
+#include "Poco/Net/StringPartSource.h"
+#include "Poco/Net/SSLManager.h"
+#include "Poco/Net/KeyConsoleHandler.h"
+#include "Poco/Net/ConsoleCertificateHandler.h"
 #include "Poco/SharedPtr.h"
 #include "Poco/Path.h"
 #include "Poco/Exception.h"

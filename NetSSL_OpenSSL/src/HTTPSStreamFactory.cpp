@@ -14,8 +14,8 @@
 //
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSStreamFactory.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSClientSession.h"
+#include "Poco/Net/HTTPSStreamFactory.h"
+#include "Poco/Net/HTTPSClientSession.h"
 #include "Poco/Net/HTTPIOStream.h"
 #include "Poco/Net/HTTPRequest.h"
 #include "Poco/Net/HTTPResponse.h"

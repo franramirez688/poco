@@ -1,4 +1,3 @@
-IF(NOT BIICODE)
 set(LIBNAME "mod_poco")
 
 # Sources
@@ -25,4 +24,3 @@ target_include_directories( "${LIBNAME}"
 if (ENABLE_TESTS)
   add_subdirectory(samples)
 endif ()
-ENDIF(NOT BIICODE)

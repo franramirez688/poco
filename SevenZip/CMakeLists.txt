@@ -1,4 +1,3 @@
-IF(NOT BIICODE)
 set(LIBNAME "SevenZip")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -77,4 +76,3 @@ if (ENABLE_TESTS)
     #add_subdirectory(testsuite)
 endif ()
 
-ENDIF(BIICODE)

@@ -1,7 +1,3 @@
-IF(BIICODE)
-    target_compile_definitions(${BII_BLOCK_TARGET} INTERFACE ${ODBC_CFLAGS} -DTHREADSAFE)
-    target_link_libraries( ${BII_BLOCK_TARGET} INTERFACE ${ODBC_LIBRARIES})
-ELSE()
 set(LIBNAME "DataODBC")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -38,5 +34,3 @@ POCO_GENERATE_PACKAGE("${LIBNAME}")
 if (ENABLE_TESTS)
     add_subdirectory(testsuite)
 endif ()
-
-endif(BIICODE)

@@ -1,7 +1,7 @@
 //
 // HTTPSClientSession.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSClientSession.h#2 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/HTTPSClientSession.h#2 $
 //
 // Library: NetSSL_OpenSSL
 // Package: HTTPSClient
@@ -20,12 +20,12 @@
 #define NetSSL_HTTPSClientSession_INCLUDED
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Utility.h"
+#include "Poco/Net/NetSSL.h"
+#include "Poco/Net/Utility.h"
 #include "Poco/Net/HTTPClientSession.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Context.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Session.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/X509Certificate.h"
+#include "Poco/Net/Context.h"
+#include "Poco/Net/Session.h"
+#include "Poco/Net/X509Certificate.h"
 
 
 namespace Poco {

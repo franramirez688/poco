@@ -13,10 +13,10 @@
 
 
 #include "Twitter.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPSClientSession.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPRequest.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/HTTPResponse.h"
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/OAuth10Credentials.h"
+#include "Poco/Net/HTTPSClientSession.h"
+#include "Poco/Net/HTTPRequest.h"
+#include "Poco/Net/HTTPResponse.h"
+#include "Poco/Net/OAuth10Credentials.h"
 #include "Poco/Util/JSONConfiguration.h"
 #include "Poco/URI.h"
 #include "Poco/Format.h"

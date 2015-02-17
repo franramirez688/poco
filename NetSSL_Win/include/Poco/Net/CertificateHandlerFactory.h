@@ -20,7 +20,7 @@
 #define NetSSL_CertificateHandlerFactory_INCLUDED
 
 
-#include "fenix/poco/NetSSL_Win/include/Poco/Net/NetSSL.h"
+#include "Poco/Net/NetSSL.h"
 
 
 namespace Poco {

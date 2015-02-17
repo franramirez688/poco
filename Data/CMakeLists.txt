@@ -1,46 +1,3 @@
-IF(BIICODE)
-    if (NOT POCO_STATIC)
-        target_compile_definitions(${BII_BLOCK_TARGET} INTERFACE -DTHREADSAFE)
-    endif (NOT POCO_STATIC)
-
-    if(MSVC AND NOT(MSVC_VERSION LESS 1400))
-        set_source_files_properties(src/StatementImpl.cpp
-            PROPERTIES COMPILE_FLAGS "/bigobj")
-    endif()
-
-    if(ENABLE_DATA_SQLITE)
-        # SQlite3 is built in any case
-        add_subdirectory( SQLite )
-    endif(ENABLE_DATA_SQLITE)
-
-    if(ENABLE_DATA_MYSQL)
-    find_package(MySQL)
-    if(MYSQL_FOUND)
-        target_include_directories(${BII_BLOCK_TARGET} INTERFACE "${MYSQL_INCLUDE_DIR}")
-        message(STATUS "MySQL Support Enabled")
-        add_subdirectory( MySQL )
-    else()
-        message(STATUS "MySQL Support Disabled - no MySQL library")
-    endif(MYSQL_FOUND)
-    endif(ENABLE_DATA_MYSQL)
-
-    if(ENABLE_DATA_ODBC)
-    find_package(ODBC)
-    if(WIN32 AND NOT WINCE)
-        set(ODBC_LIBRARIES "odbc32" "odbccp32")
-        message(STATUS "Windows native ODBC Support Enabled")
-        add_subdirectory( ODBC )
-    else(WIN32 AND NOT WINCE)
-        if(ODBC_FOUND)
-            target_include_directories(${BII_BLOCK_TARGET} INTERFACE "${ODBC_INCLUDE_DIRECTORIES}")
-            message(STATUS "ODBC Support Enabled")
-            add_subdirectory( ODBC )
-        else()
-            message(STATUS "ODBC Support Disabled - no ODBC runtime")
-        endif()
-    endif(WIN32 AND NOT WINCE)
-    endif(ENABLE_DATA_ODBC)
-ELSE()
 set(LIBNAME "Data")
 set(POCO_LIBNAME "Poco${LIBNAME}")
 
@@ -118,6 +75,3 @@ if (ENABLE_TESTS)
     add_subdirectory(samples)
     add_subdirectory(testsuite)
 endif ()
-
-
-ENDIF(BIICODE)

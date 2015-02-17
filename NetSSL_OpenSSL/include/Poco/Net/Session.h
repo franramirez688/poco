@@ -1,7 +1,7 @@
 //
 // Session.h
 //
-// $Id: //poco/1.4/NetSSL_OpenSSL/include/fenix/poco/NetSSL_OpenSSL/include/Poco/Net/Session.h#1 $
+// $Id: //poco/1.4/NetSSL_OpenSSL/include/Poco/Net/Session.h#1 $
 //
 // Library: NetSSL_OpenSSL
 // Package: SSLCore
@@ -20,7 +20,7 @@
 #define NetSSL_Session_INCLUDED
 
 
-#include "fenix/poco/NetSSL_OpenSSL/include/Poco/Net/NetSSL.h"
+#include "Poco/Net/NetSSL.h"
 #include "Poco/RefCountedObject.h"
 #include "Poco/AutoPtr.h"
 #include <openssl/ssl.h>

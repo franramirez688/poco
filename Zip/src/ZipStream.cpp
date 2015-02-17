@@ -26,7 +26,7 @@
 #if defined(POCO_UNBUNDLED)
 #include <zlib.h>
 #else
-#include "zlib/zlib/zlib.h"
+#include "Poco/zlib.h"
 #endif
 
 
