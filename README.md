@@ -1,5 +1,7 @@
-POCO C++ Libraries [![Build Status](https://webapi.biicode.com/v1/badges/fenix/fenix/poco/v1.4.7p1)](https://www.biicode.com/fenix/fenix/poco/v1.4.7p1) 
+POCO C++ Libraries  
 =====================
+
+[![Build Status](https://webapi.biicode.com/v1/badges/fenix/fenix/poco/v1.4.7p1)](https://www.biicode.com/fenix/fenix/poco/v1.4.7p1)
 
 In this document you will find a brief description of the directory layout,
 as well as a description necessary steps to build the POCO C++ Libraries.
