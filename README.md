@@ -38,13 +38,13 @@ Program your code and build it:
 You can check [the block examples/poco(v1.4.7p1)](https://www.biicode.com/examples/examples/poco/v1.4.7p1) with some examples using POCO C++, 1.4.7p1 version, with biicode.
 
 
-## DOCUMENTATION
+## Documentation
 
 Plenty of documentation (tutorial slides, articles and SDK reference)
 is available at <http://pocoproject.org/documentation/>.
 
 
-## MORE INFORMATION
+## More information
 
 For more information, see the POCO C++ Libraries website
 at <http://pocoproject.org>.
