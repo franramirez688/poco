@@ -101,7 +101,6 @@ bin/
 bin64/
 lib/
 lib64/
-pocomsg.h
 
 # Eclipse generated files #
 ######################
