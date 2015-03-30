@@ -97,8 +97,8 @@ def apply_changes():
     ''' Applying necessary chnages to use POCO with biicode '''
     shutil.copy(os.path.join(root_folder, 'biicode', 'conf', 'biicode.conf'), root_folder)
     shutil.copy(os.path.join(root_folder, 'biicode', 'conf', 'ignore.bii'), root_folder)
-    shutil.copy(os.path.join(root_folder, 'biicode', 'conf', 'pocomsg.h'),
-                os.path.join(root_folder, 'Foundation', 'src'))
+    shutil.copy(os.path.join(root_folder, 'biicode', 'conf', 'pocomsg.h.bii'),
+                os.path.join(root_folder, 'Foundation', 'src', 'pocomsg.h'))
 
     base_header_name = os.path.join(root_folder, "Foundation", "include", "Poco")
     # Replacements
